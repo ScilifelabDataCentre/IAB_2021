@@ -190,6 +190,7 @@ Pubs_cat_raw = pd.read_excel(
 
 pub_sub = Pubs_cat_raw[["Year", "Labels", "Qualifiers"]]
 pub_sub = pub_sub.replace(r"^\s*$", "No category", regex=True)
+pub_sub["Qualifiers"] = pub_sub["Qualifiers"].astype("category")
 
 pub_cat_group = pub_sub.groupby(["Year", "Labels", "Qualifiers"]).size().reset_index()
 
@@ -414,7 +415,6 @@ JIF_match_basic = match_JIF_seplabs.replace(fac_map, regex=True)
 JIF_sub = JIF_match_basic[["Year", "Labels", "JIFcat"]]
 
 JIF_sub_group = JIF_sub.groupby(["Year", "Labels", "JIFcat"]).size().reset_index()
-
 
 JIF_sub_group.columns = ["Year", "Unit", "JIFcat", "Count"]
 
