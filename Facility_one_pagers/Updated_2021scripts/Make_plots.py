@@ -11,17 +11,76 @@
 import pandas as pd
 import os
 import plotly.graph_objects as go
-
+import plotly.express as px
 from colour_science_2020 import (
     SCILIFE_COLOURS,
-    FACILITY_USER_AFFILIATION_COLOUR_OFFICIAL,
+    FACILITY_USER_AFFILIATION_COLOUR_OFFICIAL_ABB,
 )
+
 from input_data import affiliate_data, pub_cat_data, JIF_data
 
 # affiliate_data - a combined dataset of affiliates for each facility and year
 # pub_cat_data - a summary of the number of each 'type' of publication for each fac and year
 # JIF_data - a summary of data in JIF categories (e.g. JIF = 6-9) for each fac and year
 
+# Make Pie charts for each year (last 3) and unit
+
+
+def Aff_pies_func(input):
+    aff_data = input
+    if sum(aff_data.Count) < 2:
+        pi_plural = "PI"
+    else:
+        pi_plural = "PIs"
+    fig = px.pie(
+        aff_data,
+        values="Count",
+        names="PI_aff",
+        hole=0.6,
+        color="PI_aff",
+        color_discrete_map=FACILITY_USER_AFFILIATION_COLOUR_OFFICIAL_ABB,
+    )
+
+    fig.update_traces(textposition="outside", textinfo="percent+label")
+
+    fig.update_layout(
+        margin=dict(l=200, r=200, b=300, t=100),
+        font=dict(size=16),
+        annotations=[
+            dict(
+                showarrow=False,
+                text="{} {}".format(sum(aff_data.Count), pi_plural),
+                font=dict(size=30),
+                x=0.5,
+                y=0.5,
+            )
+        ],
+        showlegend=False,
+        width=1000,
+        height=1000,
+        autosize=False,
+    )
+    if not os.path.isdir("Plots/Aff_Pies/"):
+        os.mkdir("Plots/Aff_Pies/")
+    if sum(aff_data.Count) > 0:
+        fig.write_image(
+            "Plots/Aff_Pies/{}_{}_affs.png".format(
+                input["Unit"][input["Unit"].first_valid_index()],
+                input["Year"][input["Year"].first_valid_index()],
+            )
+        )
+    else:
+        print(
+            "Warning: not all unit year combinations have data - check whether this is expected"
+        )
+
+
+for i in affiliate_data["Year"].unique():
+    temp = affiliate_data[(affiliate_data["Year"] == i)]
+    for z in temp["Unit"].unique():
+        Aff_pies_func(temp[(temp["Unit"] == z)])
+
+# Note - some combinations of year and unit might be missing if they are new units etc.
 
 ## Create publication category plots
 
@@ -37,11 +96,19 @@ def pub_cat_func(input):
     fig = go.Figure(
         data=[
             go.Bar(
+                name="No category",
+                x=No_cat.Year,
+                y=No_cat.Count,
+                marker=dict(
+                    color=SCILIFE_COLOURS[17], line=dict(color="#000000", width=1)
+                ),
+            ),
+            go.Bar(
                 name="Collaborative",
                 x=Collaborative.Year,
                 y=Collaborative.Count,
                 marker=dict(
-                    color=SCILIFE_COLOURS[17], line=dict(color="#000000", width=1)
+                    color=SCILIFE_COLOURS[12], line=dict(color="#000000", width=1)
                 ),
             ),
             go.Bar(
@@ -49,21 +116,13 @@ def pub_cat_func(input):
                 x=Service.Year,
                 y=Service.Count,
                 marker=dict(
-                    color=SCILIFE_COLOURS[12], line=dict(color="#000000", width=1)
-                ),
-            ),
-            go.Bar(
-                name="Technology development",
-                x=Tech_dev.Year,
-                y=Tech_dev.Count,
-                marker=dict(
                     color=SCILIFE_COLOURS[4], line=dict(color="#000000", width=1)
                 ),
             ),
             go.Bar(
-                name="No category",
-                x=No_cat.Year,
-                y=No_cat.Count,
+                name="Technology<br>development",
+                x=Tech_dev.Year,
+                y=Tech_dev.Count,
                 marker=dict(
                     color=SCILIFE_COLOURS[0], line=dict(color="#000000", width=1)
                 ),
@@ -75,7 +134,8 @@ def pub_cat_func(input):
         barmode="stack",
         plot_bgcolor="white",
         font=dict(size=18),
-        margin=dict(r=150),
+        autosize=False,
+        margin=dict(r=250),
         width=600,
         height=600,
         showlegend=True,
@@ -142,9 +202,7 @@ def pub_cat_func(input):
 # function to iterate through all units for publication category/type
 
 for i in pub_cat_data["Unit"].unique():
-    print(i)
     pub_cat_func(pub_cat_data[(pub_cat_data["Unit"] == i)])
-
 
 ## Create JIF plots
 
@@ -206,8 +264,9 @@ def JIF_graph_func(input):
     fig.update_layout(
         barmode="stack",
         plot_bgcolor="white",
+        autosize=False,
         font=dict(size=18),
-        margin=dict(r=150),
+        margin=dict(r=250),
         width=600,
         height=600,
         showlegend=True,
@@ -273,6 +332,5 @@ def JIF_graph_func(input):
 
 # function to iterate through all units for JIF
 
-# for i in JIF_data["Unit"].unique():
-#     print(i)
-#     JIF_graph_func(JIF_data[(JIF_data["Unit"] == i)])
+for i in JIF_data["Unit"].unique():
+    JIF_graph_func(JIF_data[(JIF_data["Unit"] == i)])
