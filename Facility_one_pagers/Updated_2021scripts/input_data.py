@@ -103,7 +103,7 @@ affiliate_data = aff_comb.replace(aff_map_abbr, regex=True)
 # Read in to pdf almost directly
 # rename columns for clarity
 Facility_data = pd.read_excel(
-    "IAB2021data/Single data 2020.xlsx",
+    "IAB2021data/Single data 2020_ver2.xlsx",
     sheet_name="Single Data",
     header=0,
     engine="openpyxl",
@@ -125,11 +125,11 @@ Facility_data.rename(
         "Reource allocation 2020 Healthcare": "RA_Health",
         "Reource allocation 2020 Other gov. agencies": "RA_ogov",
         "User Fees 2020 Total (kSEK)": "UF_Tot",
-        "User fees academic Sweden": "UF_Swe",
-        "User fees academic international": "UF_Int",
-        "User fees industry": "UF_ind",
-        "User fees healthcare": "UF_health",
-        "User fees other": "UF_oth",
+        "Cost reagents": "UF_reag",
+        "Cost instrument": "UF_instr",
+        "Cost salaries": "UF_sal",
+        "Cost rents": "UF_rent",
+        "Cost other": "UF_other",
         "User fees by sector 2020 Academia (national)": "UF_sect_nat",
         "User fees by sector 2020 Academia (international)": "UF_sect_int",
         "User fees by sector 2020 Industry": "UF_sect_ind",
@@ -164,6 +164,7 @@ Funding_comb = pd.concat([SLL_funding, other_funding])
 tot_fund = Funding_comb.groupby(["Facility"]).sum().reset_index()
 tot_fund.insert(loc=2, column="Financier", value="Total")
 Funding = pd.concat([Funding_comb, tot_fund])
+
 
 ###PUBLICATIONS!
 # Used in the two graphs for one-pagers
