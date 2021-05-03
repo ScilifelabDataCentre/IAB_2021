@@ -1,5 +1,6 @@
 # Regular packages
 import os
+
 import pandas as pd
 
 # Specific imports from reportlab
@@ -23,7 +24,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 from functools import partial
 
 # SVG file function
-# from svglib.svglib import svg2rlg
+from svglib.svglib import svg2rlg
 
 # These are custom functions
 # from facility_report_plots import user_plot, publication_plot
@@ -91,6 +92,18 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
     )
     styles.add(
         ParagraphStyle(
+            name="onepager_chart_heading",
+            parent=styles["Heading1"],
+            fontName="Lato-B",
+            fontSize=10,
+            color="#FF00AA",
+            leading=16,
+            spaceAfter=4,
+            spaceBefore=8,
+        )
+    )
+    styles.add(
+        ParagraphStyle(
             name="onepager_title",
             parent=styles["Heading1"],
             fontName="Lato-B",
@@ -126,16 +139,104 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
     # The document is set up with two frames, one frame is one column, and their widths are set according to SciLifeLab design policy
     frame1 = Frame(
         doc.leftMargin,
-        doc.bottomMargin,
-        doc.width / 2 - 3.5 * mm,
-        doc.height - 18 * mm,
+        doc.bottomMargin + (doc.height / 2),
+        doc.width / 3,  # - 3.5 * mm,
+        (doc.height / 2) - 18 * mm,
         id="col1",
+        #        showBoundary=1,
         leftPadding=0 * mm,
         topPadding=5 * mm,
         rightPadding=0 * mm,
         bottomPadding=0 * mm,
     )
-    # frame2 = Frame(doc.leftMargin+doc.width/2+3.5*mm, doc.bottomMargin, doc.width/2-3.5*mm, doc.height-18*mm, id='col2', leftPadding=0*mm, topPadding=0*mm, rightPadding=0*mm, bottomPadding=0*mm)
+    frame2 = Frame(
+        doc.leftMargin + doc.width / 3 + 3.5 * mm,  # 2 + 3.5 * mm,
+        doc.bottomMargin + (doc.height / 2),
+        doc.width / 3,  # 2 - 3.5 * mm,
+        (doc.height / 2) - 18 * mm,
+        id="col2",
+        #        showBoundary=1,
+        leftPadding=0 * mm,
+        topPadding=5 * mm,
+        rightPadding=0 * mm,
+        bottomPadding=0 * mm,
+    )
+    frame3 = Frame(
+        doc.leftMargin + (3.5 * mm) + doc.width * 0.61,
+        doc.bottomMargin + (doc.height / 2),
+        doc.width / 2.7,  # 2 - 3.5 * mm,
+        (doc.height / 2) - 18 * mm,
+        id="col3",
+        #        showBoundary=1,
+        leftPadding=0 * mm,
+        topPadding=5 * mm,
+        rightPadding=0 * mm,
+        bottomPadding=0 * mm,
+    )
+    # top 3 frames contain the text
+    # Next frames the Figures
+    # Bar charts go first - divide the page in halves for them
+    frame4 = Frame(
+        doc.leftMargin,
+        doc.bottomMargin + (doc.height / 4),
+        doc.width / 2,  # 2 - 3.5 * mm,
+        (doc.height / 4),  # + 50 * mm,  # - 18 * mm,
+        id="pic1",
+        #        showBoundary=1,
+        leftPadding=0 * mm,
+        topPadding=3 * mm,
+        rightPadding=0 * mm,
+        bottomPadding=0 * mm,
+    )
+    frame5 = Frame(
+        doc.leftMargin + (doc.width / 2),
+        doc.bottomMargin + (doc.height / 4),
+        doc.width / 2,  # 2 - 3.5 * mm,
+        (doc.height / 4),  # + 50 * mm,  # - 18 * mm,
+        id="pic2",
+        #        showBoundary=1,
+        leftPadding=0 * mm,
+        topPadding=3 * mm,
+        rightPadding=0 * mm,
+        bottomPadding=0 * mm,
+    )
+    # NOW 3 PIE CHARTS
+    frame6 = Frame(
+        doc.leftMargin,
+        doc.bottomMargin,
+        doc.width / 3,  # 2 - 3.5 * mm,
+        (doc.height / 4),  # + 50 * mm,  # - 18 * mm,
+        id="pic3",
+        #        showBoundary=1,
+        leftPadding=0 * mm,
+        topPadding=3 * mm,
+        rightPadding=0 * mm,
+        bottomPadding=0 * mm,
+    )
+    frame7 = Frame(
+        doc.leftMargin + doc.width / 3,
+        doc.bottomMargin,
+        doc.width / 3,  # 2 - 3.5 * mm,
+        (doc.height / 4),  # + 50 * mm,  # - 18 * mm,
+        id="pic4",
+        #        showBoundary=1,
+        leftPadding=0 * mm,
+        topPadding=3 * mm,
+        rightPadding=0 * mm,
+        bottomPadding=0 * mm,
+    )
+    frame8 = Frame(
+        doc.leftMargin + doc.width / 3 + doc.width / 3,
+        doc.bottomMargin,
+        doc.width / 3,  # 2 - 3.5 * mm,
+        (doc.height / 4),  # + 50 * mm,  # - 18 * mm,
+        id="pic5",
+        #        showBoundary=1,
+        leftPadding=0 * mm,
+        topPadding=3 * mm,
+        rightPadding=0 * mm,
+        bottomPadding=0 * mm,
+    )
     header_content = Paragraph(
         "<b>{}</b><br/><font name=Lato size=12> {} platform</font>".format(
             (Facility_data["Facility"]).to_string(index=False),
@@ -144,7 +245,9 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
         styles["onepager_title"],
     )
     template = PageTemplate(
-        id="test", frames=frame1, onPage=partial(header, content=header_content)
+        id="test",
+        frames=[frame1, frame2, frame3, frame4, frame5, frame6, frame7, frame8],
+        onPage=partial(header, content=header_content),
     )
     doc.addPageTemplates([template])
     # frames=[frame1,frame2]
@@ -379,7 +482,7 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
             styles["onepager_text"],
         )
     )
-
+    Story.append(CondPageBreak(50 * mm))
     ### USER FEES - reagents, instruments...
     total_percentage = (
         int(Facility_data["UF_reag"])
@@ -484,7 +587,6 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
             styles["onepager_text"],
         )
     )
-
     ### USER FEES BY SECTOR
     total_percentage = (
         int(Facility_data["UF_sect_nat"])
@@ -568,7 +670,8 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
             styles["onepager_text"],
         )
     )
-
+    Story.append(CondPageBreak(50 * mm))
+    #### SERVICES
     Story.append(
         Paragraph(
             "<font color='#A7C947'><font name=Lato-B><b>Services</b></font></font>",
@@ -587,8 +690,8 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
                 styles["onepager_text"],
             )
         )
-
-    # This puts an asterisk at the bottom of the page, with some info if there was any in the data file
+    # special notes
+    # This puts an asterisk at the bottom of the services, with some info if there was any in the data file
     if facility_name == "Mass Cytometry (KI)":
         Story.append(
             Paragraph(
@@ -606,9 +709,142 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
     else:
         print("no special notes for this facility")
 
+    # Now I need to put in the Figures.. (5 plots if data is available for everything, or some might be missing)
+    # figs already made in .svg format, they need to be imported
+    Story.append(CondPageBreak(200 * mm))  # move to next frame
+    # pubs by cat first, then pubs by JIF
+    Story.append(
+        Paragraph(
+            "<font color='#A7C947' name=Lato-B><b>Publication by category</b></font>",
+            styles["onepager_chart_heading"],
+        )
+    )
+    filepath_cats = "/Users/liahu895/Documents/GitHub/IAB_2021/Facility_one_pagers/Updated_2021scripts/Plots/pubcat_plots/{}_cats.svg".format(
+        (facility_name),
+    )
+    isFile_cats = os.path.isfile(filepath_cats)
+    if isFile_cats == True:
+        im_cats = svg2rlg(filepath_cats)
+        im_cats = Image(im_cats, width=70 * mm, height=55 * mm)
+        im_cats.hAlign = "CENTER"
+        Story.append(im_cats)
+    else:
+        Story.append(
+            Paragraph(
+                "No image for category",
+                styles["onepager_text"],
+            )
+        )
+    # Now JIF barchart
+    Story.append(CondPageBreak(200 * mm))  # move to next frame
+    Story.append(
+        Paragraph(
+            "<font color='#A7C947' name=Lato-B><b>Publication by Journal Impact Factor</b></font>",
+            styles["onepager_chart_heading"],
+        )
+    )
+    filepath_JIF = "/Users/liahu895/Documents/GitHub/IAB_2021/Facility_one_pagers/Updated_2021scripts/Plots/JIF_plots/{}_JIF.svg".format(
+        (facility_name),
+    )
+    isFile_JIF = os.path.isfile(filepath_JIF)
+    if isFile_JIF == True:
+        im_JIF = svg2rlg(filepath_JIF)
+        im_JIF = Image(im_JIF, width=70 * mm, height=55 * mm)
+        im_JIF.hAlign = "CENTER"
+        Story.append(im_JIF)
+    else:
+        Story.append(
+            Paragraph(
+                "No image for category",
+                styles["onepager_text"],
+            )
+        )
+    Story.append(CondPageBreak(200 * mm))  # move to next frame
+    #
+    # Now the pie charts (in the lowest part of the page)- ascending year left to right
+    Story.append(
+        Paragraph(
+            "<font color='#A7C947' name=Lato-B><b>Users {}</b></font>".format(
+                int(current_year) - 2
+            ),
+            styles["onepager_chart_heading"],
+        )
+    )
+    filepath_u18 = "/Users/liahu895/Documents/GitHub/IAB_2021/Facility_one_pagers/Updated_2021scripts/Plots/Aff_Pies/{}_{}_affs.svg".format(
+        (facility_name),
+        (int(current_year) - 2),
+    )
+    isFile_u18 = os.path.isfile(filepath_u18)
+    if isFile_u18 == True:
+        im_u18 = svg2rlg(filepath_u18)
+        im_u18 = Image(im_u18, width=55 * mm, height=55 * mm)
+        im_u18.hAlign = "CENTER"
+        Story.append(im_u18)
+    else:
+        Story.append(
+            Paragraph(
+                "No image for category",
+                styles["onepager_text"],
+            )
+        )
+    Story.append(CondPageBreak(200 * mm))  # move to next frame
+    Story.append(
+        Paragraph(
+            "<font color='#A7C947' name=Lato-B><b>Users {}</b></font>".format(
+                int(current_year) - 1
+            ),
+            styles["onepager_chart_heading"],
+        )
+    )
+    filepath_u19 = "/Users/liahu895/Documents/GitHub/IAB_2021/Facility_one_pagers/Updated_2021scripts/Plots/Aff_Pies/{}_{}_affs.svg".format(
+        (facility_name),
+        (int(current_year) - 1),
+    )
+    isFile_u19 = os.path.isfile(filepath_u19)
+    if isFile_u19 == True:
+        im_u19 = svg2rlg(filepath_u19)
+        im_u19 = Image(im_u19, width=55 * mm, height=55 * mm)
+        im_u19.hAlign = "CENTER"
+        Story.append(im_u19)
+    else:
+        Story.append(
+            Paragraph(
+                "No image for category",
+                styles["onepager_text"],
+            )
+        )
+    Story.append(CondPageBreak(200 * mm))  # move to next frame
+    Story.append(
+        Paragraph(
+            "<font color='#A7C947' name=Lato-B><b>Users {}</b></font>".format(
+                int(current_year)
+            ),
+            styles["onepager_chart_heading"],
+        )
+    )
+    filepath_u20 = "/Users/liahu895/Documents/GitHub/IAB_2021/Facility_one_pagers/Updated_2021scripts/Plots/Aff_Pies/{}_{}_affs.svg".format(
+        (facility_name),
+        (int(current_year)),
+    )
+    isFile_u20 = os.path.isfile(filepath_u20)
+    if isFile_u20 == True:
+        im_u20 = svg2rlg(filepath_u20)
+        im_u20 = Image(im_u20, width=55 * mm, height=55 * mm)
+        im_u20.hAlign = "CENTER"
+        Story.append(im_u20)
+    else:
+        Story.append(
+            Paragraph(
+                "No image for category",
+                styles["onepager_text"],
+            )
+        )
+
     # Finally, build the document.
     doc.build(Story)
 
+
+# if need to extract first page... first_page = input_pdf.getPage(0)
 
 current_year = 2020
 test_facs = Facility_data[
