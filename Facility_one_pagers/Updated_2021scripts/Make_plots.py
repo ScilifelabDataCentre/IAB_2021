@@ -45,12 +45,12 @@ def Aff_pies_func(input):
 
     fig.update_layout(
         margin=dict(l=200, r=200, b=300, t=100),
-        font=dict(size=35),
+        font=dict(size=35),  # works for legibility, see how it works
         annotations=[
             dict(
                 showarrow=False,
                 text="{} {}".format(sum(aff_data.Count), pi_plural),
-                font=dict(size=50),
+                font=dict(size=50),  # should work for all centre bits
                 x=0.5,
                 y=0.5,
             )
