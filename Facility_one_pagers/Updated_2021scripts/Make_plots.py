@@ -64,7 +64,7 @@ def Aff_pies_func(input):
         os.mkdir("Plots/Aff_Pies/")
     if sum(aff_data.Count) > 0:
         fig.write_image(
-            "Plots/Aff_Pies/{}_{}_affs.png".format(
+            "Plots/Aff_Pies/{}_{}_affs.svg".format(
                 input["Unit"][input["Unit"].first_valid_index()],
                 input["Year"][input["Year"].first_valid_index()],
             )
@@ -135,7 +135,7 @@ def pub_cat_func(input):
         plot_bgcolor="white",
         font=dict(size=18),
         autosize=False,
-        margin=dict(r=250),
+        margin=dict(r=250, t=0, b=0, l=0),
         width=600,
         height=600,
         showlegend=True,
@@ -193,7 +193,7 @@ def pub_cat_func(input):
     if not os.path.isdir("Plots/pubcat_plots/"):
         os.mkdir("Plots/pubcat_plots/")
     fig.write_image(
-        "Plots/pubcat_plots/{}_cats.png".format(
+        "Plots/pubcat_plots/{}_cats.svg".format(
             input["Unit"][input["Unit"].first_valid_index()]
         )
     )
@@ -266,7 +266,7 @@ def JIF_graph_func(input):
         plot_bgcolor="white",
         autosize=False,
         font=dict(size=18),
-        margin=dict(r=250),
+        margin=dict(r=250, t=0, b=0, l=0),
         width=600,
         height=600,
         showlegend=True,
@@ -324,7 +324,7 @@ def JIF_graph_func(input):
     if not os.path.isdir("Plots/JIF_plots/"):
         os.mkdir("Plots/JIF_plots/")
     fig.write_image(
-        "Plots/JIF_plots/{}_JIF.png".format(
+        "Plots/JIF_plots/{}_JIF.svg".format(
             input["Unit"][input["Unit"].first_valid_index()]
         )
     )
