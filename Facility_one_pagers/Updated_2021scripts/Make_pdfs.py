@@ -150,7 +150,7 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
         bottomPadding=0 * mm,
     )
     frame2 = Frame(
-        doc.leftMargin + doc.width / 3 + 3.5 * mm,  # 2 + 3.5 * mm,
+        doc.leftMargin + doc.width / 3 + 2 * mm,  # 2 + 3.5 * mm,
         doc.bottomMargin + (doc.height / 2),
         doc.width / 3,  # 2 - 3.5 * mm,
         (doc.height / 2) - 18 * mm,
@@ -209,7 +209,7 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
         id="pic3",
         #        showBoundary=1,
         leftPadding=0 * mm,
-        topPadding=3 * mm,
+        topPadding=0 * mm,
         rightPadding=0 * mm,
         bottomPadding=0 * mm,
     )
@@ -221,7 +221,7 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
         id="pic4",
         #        showBoundary=1,
         leftPadding=0 * mm,
-        topPadding=3 * mm,
+        topPadding=0 * mm,
         rightPadding=0 * mm,
         bottomPadding=0 * mm,
     )
@@ -233,7 +233,7 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
         id="pic5",
         #        showBoundary=1,
         leftPadding=0 * mm,
-        topPadding=3 * mm,
+        topPadding=0 * mm,
         rightPadding=0 * mm,
         bottomPadding=0 * mm,
     )
@@ -388,6 +388,7 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
             styles["onepager_text"],
         )
     )
+    Story.append(CondPageBreak(100 * mm))
     ### RESOURCE ALLOCATION
     total_percentage = total_percentage = (
         int(Facility_data["RA_nat"])
@@ -482,7 +483,7 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
             styles["onepager_text"],
         )
     )
-    Story.append(CondPageBreak(50 * mm))
+    #    Story.append(CondPageBreak(50 * mm))
     ### USER FEES - reagents, instruments...
     total_percentage = (
         int(Facility_data["UF_reag"])
@@ -587,6 +588,7 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
             styles["onepager_text"],
         )
     )
+    Story.append(CondPageBreak(100 * mm))
     ### USER FEES BY SECTOR
     total_percentage = (
         int(Facility_data["UF_sect_nat"])
@@ -670,7 +672,7 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
             styles["onepager_text"],
         )
     )
-    Story.append(CondPageBreak(50 * mm))
+    # Story.append(CondPageBreak(50 * mm))
     #### SERVICES
     Story.append(
         Paragraph(
@@ -680,7 +682,10 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
     )
 
     if Facility_data["Services"].notnull:
-        bullet_points = Facility_data["Services"]
+        pd.options.display.max_colwidth = 600
+        bullet_pointing = Facility_data["Services"].to_string(index=False)
+        bullet_points = bullet_pointing.replace("\\n", "*")
+        bullet_points = bullet_points.split("*")  # .explode(bullet_points)
         for bullet in bullet_points:
             Story.append(Paragraph(bullet, styles["onepager_text"]))
     else:
@@ -777,7 +782,7 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
     isFile_u18 = os.path.isfile(filepath_u18)
     if isFile_u18 == True:
         im_u18 = svg2rlg(filepath_u18)
-        im_u18 = Image(im_u18, width=55 * mm, height=55 * mm)
+        im_u18 = Image(im_u18, width=58 * mm, height=58 * mm)
         im_u18.hAlign = "CENTER"
         Story.append(im_u18)
     else:
@@ -803,7 +808,7 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
     isFile_u19 = os.path.isfile(filepath_u19)
     if isFile_u19 == True:
         im_u19 = svg2rlg(filepath_u19)
-        im_u19 = Image(im_u19, width=55 * mm, height=55 * mm)
+        im_u19 = Image(im_u19, width=58 * mm, height=58 * mm)
         im_u19.hAlign = "CENTER"
         Story.append(im_u19)
     else:
@@ -829,7 +834,7 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
     isFile_u20 = os.path.isfile(filepath_u20)
     if isFile_u20 == True:
         im_u20 = svg2rlg(filepath_u20)
-        im_u20 = Image(im_u20, width=55 * mm, height=55 * mm)
+        im_u20 = Image(im_u20, width=58 * mm, height=58 * mm)
         im_u20.hAlign = "CENTER"
         Story.append(im_u20)
     else:
@@ -848,7 +853,9 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
 
 current_year = 2020
 test_facs = Facility_data[
-    (Facility_data["Facility"] == "Drug Discovery and Development")
+    (
+        Facility_data["Facility"] == "Drug Discovery and Development"
+    )  # "Drug Discovery and Development"
 ]
 test_fund = Funding[(Funding["Facility"] == "Drug Discovery and Development")]
 facility_name = "Drug Discovery and Development"
