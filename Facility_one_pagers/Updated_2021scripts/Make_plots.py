@@ -12,6 +12,7 @@ import pandas as pd
 import os
 import plotly.graph_objects as go
 import plotly.express as px
+import numpy as np
 from colour_science_2020 import (
     SCILIFE_COLOURS,
     FACILITY_USER_AFFILIATION_COLOUR_OFFICIAL_ABB,
@@ -32,20 +33,42 @@ def Aff_pies_func(input):
         pi_plural = "PI"
     else:
         pi_plural = "PIs"
-    fig = px.pie(
-        aff_data,
-        values="Count",
-        names="PI_aff",
-        hole=0.6,
-        color="PI_aff",
-        color_discrete_map=FACILITY_USER_AFFILIATION_COLOUR_OFFICIAL_ABB,
+    colours = np.array([""] * len(aff_data["PI_aff"]), dtype=object)
+    for i in aff_data["PI_aff"]:
+        colours[
+            np.where(aff_data["PI_aff"] == i)
+        ] = FACILITY_USER_AFFILIATION_COLOUR_OFFICIAL_ABB[str(i)]
+    fig = go.Figure(
+        go.Pie(
+            #    aff_data,
+            values=aff_data["Count"],
+            labels=aff_data["PI_aff"],
+            hole=0.6,
+            # color=aff_data["PI_aff"],
+            marker=dict(colors=colours),
+            direction="clockwise",
+            sort=True,
+        )
     )
+    # fig = px.pie(
+    #     aff_data,
+    #     values="Count",
+    #     names="PI_aff",
+    #     hole=0.6,
+    #     color="PI_aff",
+    #     color_discrete_map=FACILITY_USER_AFFILIATION_COLOUR_OFFICIAL_ABB,
+    # )
 
-    fig.update_traces(textposition="outside", textinfo="percent+label")
+    fig.update_traces(
+        textposition="outside",
+        texttemplate="%{label} (%{percent})",
+    )  # textinfo="percent+label")
 
     fig.update_layout(
-        margin=dict(l=200, r=200, b=300, t=100),
-        font=dict(size=35),  # works for legibility, see how it works
+        margin=dict(
+            l=100, r=100, b=100, t=100
+        ),  # original values l=200, r=200 b=100 t=300
+        font=dict(size=36),  # works for legibility, see how it works
         annotations=[
             dict(
                 showarrow=False,
@@ -133,7 +156,7 @@ def pub_cat_func(input):
     fig.update_layout(
         barmode="stack",
         plot_bgcolor="white",
-        font=dict(size=18),
+        font=dict(size=26),
         autosize=False,
         margin=dict(r=250, t=0, b=0, l=0),
         width=600,
@@ -265,7 +288,7 @@ def JIF_graph_func(input):
         barmode="stack",
         plot_bgcolor="white",
         autosize=False,
-        font=dict(size=18),
+        font=dict(size=26),
         margin=dict(r=250, t=0, b=0, l=0),
         width=600,
         height=600,
