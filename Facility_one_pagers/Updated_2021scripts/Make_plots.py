@@ -63,12 +63,11 @@ def Aff_pies_func(input):
         textposition="outside",
         texttemplate="%{label} (%{percent})",
     )  # textinfo="percent+label")
-
     fig.update_layout(
         margin=dict(
             l=100, r=100, b=100, t=100
         ),  # original values l=200, r=200 b=100 t=300
-        font=dict(size=36),  # works for legibility, see how it works
+        font=dict(size=34),  # 36 works for most
         annotations=[
             dict(
                 showarrow=False,
@@ -102,6 +101,113 @@ for i in affiliate_data["Year"].unique():
     temp = affiliate_data[(affiliate_data["Year"] == i)]
     for z in temp["Unit"].unique():
         Aff_pies_func(temp[(temp["Unit"] == z)])
+
+
+def Aff_pies_func_stacked_text(input):
+    aff_data = input
+    if sum(aff_data.Count) < 2:
+        pi_plural = "PI"
+    else:
+        pi_plural = "PIs"
+    colours = np.array([""] * len(aff_data["PI_aff"]), dtype=object)
+    for i in aff_data["PI_aff"]:
+        colours[
+            np.where(aff_data["PI_aff"] == i)
+        ] = FACILITY_USER_AFFILIATION_COLOUR_OFFICIAL_ABB[str(i)]
+    fig = go.Figure(
+        go.Pie(
+            #    aff_data,
+            values=aff_data["Count"],
+            labels=aff_data["PI_aff"],
+            hole=0.6,
+            # color=aff_data["PI_aff"],
+            marker=dict(colors=colours),
+            direction="clockwise",
+            sort=True,
+        )
+    )
+    # fig = px.pie(
+    #     aff_data,
+    #     values="Count",
+    #     names="PI_aff",
+    #     hole=0.6,
+    #     color="PI_aff",
+    #     color_discrete_map=FACILITY_USER_AFFILIATION_COLOUR_OFFICIAL_ABB,
+    # )
+
+    fig.update_traces(
+        textposition="outside",
+        texttemplate="%{label} <br>(%{percent})",
+    )  # texttemplate="%{label} (%{percent})")
+
+    fig.update_layout(
+        margin=dict(
+            l=100, r=100, b=100, t=100
+        ),  # original values l=200, r=200 b=100 t=300
+        font=dict(size=32),  # 36 works for most
+        annotations=[
+            dict(
+                showarrow=False,
+                text="{} {}".format(sum(aff_data.Count), pi_plural),
+                font=dict(size=50),  # should work for all centre bits
+                x=0.5,
+                y=0.5,
+            )
+        ],
+        showlegend=False,
+        width=1000,
+        height=1000,
+        autosize=False,
+    )
+    if not os.path.isdir("Plots/Aff_Pies/"):
+        os.mkdir("Plots/Aff_Pies/")
+    if sum(aff_data.Count) > 0:
+        fig.write_image(
+            "Plots/Aff_Pies/{}_{}_affs.svg".format(
+                input["Unit"][input["Unit"].first_valid_index()],
+                input["Year"][input["Year"].first_valid_index()],
+            )
+        )
+    else:
+        print(
+            "Warning: not all unit year combinations have data - check whether this is expected"
+        )
+
+
+# Some plots fit better with the labels in the pie chart stacked
+# Others fit better with the labels in pie charts side by side.
+# This will likely change each year, so written a function to fit for 2021
+# Function can easily be modified in future years
+for i in affiliate_data["Year"].unique():
+    temp = affiliate_data[(affiliate_data["Year"] == i)]
+    Aff_pies_func_stacked_text(temp[(temp["Unit"] == "Ancient DNA")])
+    Aff_pies_func_stacked_text(
+        temp[(temp["Unit"] == "Autoimmunity and Serology Profiling")]
+    )
+    Aff_pies_func_stacked_text(temp[(temp["Unit"] == "BioImage Informatics")])
+    Aff_pies_func_stacked_text(temp[(temp["Unit"] == "Cell Profiling")])
+    Aff_pies_func_stacked_text(temp[(temp["Unit"] == "Chemical Proteomics")])
+    Aff_pies_func_stacked_text(temp[(temp["Unit"] == "Clinical Genomics Gothenburg")])
+    Aff_pies_func_stacked_text(temp[(temp["Unit"] == "Clinical Genomics Linköping")])
+    Aff_pies_func_stacked_text(temp[(temp["Unit"] == "Clinical Genomics Stockholm")])
+    Aff_pies_func_stacked_text(temp[(temp["Unit"] == "Clinical Genomics Uppsala")])
+    Aff_pies_func_stacked_text(
+        temp[(temp["Unit"] == "Eukaryotic Single Cell Genomics")]
+    )
+    Aff_pies_func_stacked_text(temp[(temp["Unit"] == "Genome Engineering Zebrafish")])
+    Aff_pies_func_stacked_text(
+        temp[(temp["Unit"] == "High Throughput Genome Engineering")]
+    )
+    Aff_pies_func_stacked_text(temp[(temp["Unit"] == "In Situ Sequencing")])
+    Aff_pies_func_stacked_text(temp[(temp["Unit"] == "Mass Cytometry (KI)")])
+    Aff_pies_func_stacked_text(temp[(temp["Unit"] == "Mass Cytometry (LiU)")])
+    Aff_pies_func_stacked_text(temp[(temp["Unit"] == "Microbial Single Cell Genomics")])
+    Aff_pies_func_stacked_text(temp[(temp["Unit"] == "PLA and Single Cell Proteomics")])
+    Aff_pies_func_stacked_text(temp[(temp["Unit"] == "Proteogenomics")])
+    Aff_pies_func_stacked_text(temp[(temp["Unit"] == "Swedish Metabolomics Centre")])
+    Aff_pies_func_stacked_text(temp[(temp["Unit"] == "Systems Biology")])
+    Aff_pies_func_stacked_text(temp[(temp["Unit"] == "Translational Plasma Profiling")])
+
 
 # Note - some combinations of year and unit might be missing if they are new units etc.
 
