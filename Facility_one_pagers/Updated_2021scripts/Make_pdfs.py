@@ -134,6 +134,7 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
             bold=0,
             color="#000000",
             leading=14,
+            spaceBefore=20,
         )
     )
     # The document is set up with two frames, one frame is one column, and their widths are set according to SciLifeLab design policy
@@ -700,14 +701,14 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
     if facility_name == "Mass Cytometry (KI)":
         Story.append(
             Paragraph(
-                "* Publication data is combined for the two Mass Cytometry facilities",
+                "Note: publication data is combined for the two Mass Cytometry facilities",
                 styles["onepager_footnote"],
             )
         )
     elif facility_name == "Mass Cytometry (LiU)":
         Story.append(
             Paragraph(
-                "* Publication data is combined for the two Mass Cytometry facilities",
+                "Note: publication data is combined for the two Mass Cytometry facilities",
                 styles["onepager_footnote"],
             )
         )
@@ -736,7 +737,7 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
     else:
         Story.append(
             Paragraph(
-                "No image for category",
+                "No publication data available",
                 styles["onepager_text"],
             )
         )
@@ -760,7 +761,7 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
     else:
         Story.append(
             Paragraph(
-                "No image for category",
+                "No publication data available",
                 styles["onepager_text"],
             )
         )
@@ -788,7 +789,7 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
     else:
         Story.append(
             Paragraph(
-                "No image for category",
+                "No user information",
                 styles["onepager_text"],
             )
         )
@@ -814,7 +815,7 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
     else:
         Story.append(
             Paragraph(
-                "No image for category",
+                "No user information",
                 styles["onepager_text"],
             )
         )
@@ -840,7 +841,7 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
     else:
         Story.append(
             Paragraph(
-                "No image for category",
+                "No user information",
                 styles["onepager_text"],
             )
         )
@@ -850,15 +851,13 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
 
 
 # if need to extract first page... first_page = input_pdf.getPage(0)
-
+# considered making a function to generate all the files together
+# However, settings will change every year, so it's not that useful..
+whonow = "Translational Plasma Profiling"
 current_year = 2020
-test_facs = Facility_data[
-    (
-        Facility_data["Facility"] == "Drug Discovery and Development"
-    )  # "Drug Discovery and Development"
-]
-test_fund = Funding[(Funding["Facility"] == "Drug Discovery and Development")]
-facility_name = "Drug Discovery and Development"
+test_facs = Facility_data[(Facility_data["Facility"] == whonow)]
+test_fund = Funding[(Funding["Facility"] == whonow)]
+facility_name = whonow
 
 generatePdf(facility_name, test_facs, test_fund, current_year)
 
