@@ -45,7 +45,7 @@ def Aff_pies_func(input):
             labels=aff_data["PI_aff"],
             hole=0.6,
             # color=aff_data["PI_aff"],
-            marker=dict(colors=colours),
+            marker=dict(colors=colours, line=dict(color="#000000", width=1)),
             direction="clockwise",
             sort=True,
         )
@@ -121,7 +121,7 @@ def Aff_pies_func_stacked_text(input):
             labels=aff_data["PI_aff"],
             hole=0.6,
             # color=aff_data["PI_aff"],
-            marker=dict(colors=colours),
+            marker=dict(colors=colours, line=dict(color="#000000", width=1)),
             direction="clockwise",
             sort=True,
         )
