@@ -305,6 +305,7 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
                 styles["onepager_text"],
             )
         )
+    pd.options.display.max_colwidth = 600
     Story.append(
         Paragraph(
             "<font name=Lato-B><b>Host university: </b></font>{}".format(
@@ -850,17 +851,24 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
     doc.build(Story)
 
 
-# if need to extract first page... first_page = input_pdf.getPage(0)
-# considered making a function to generate all the files together
-# However, settings will change every year, so it's not that useful..
-whonow = "Translational Plasma Profiling"
+# made a function that will generate all files together
+# What works will change every report.
+# recommend running the below and then individually checking each one and tweaking
+# then comment below out and run for individual facilities (further down)
+# for i in Facility_data["Facility"]:
+#     whonow = i
+#     # whonow = "Support and Infrastructure"
+#     current_year = 2020
+#     test_facs = Facility_data[(Facility_data["Facility"] == whonow)]
+#     test_fund = Funding[(Funding["Facility"] == whonow)]
+#     facility_name = whonow
+#     generatePdf(facility_name, test_facs, test_fund, current_year)
+
+# Note: 2021 - WABI has no user fees. comment out warning code for this facility
+
+whonow = "High Throughput Genome Engineering"
 current_year = 2020
 test_facs = Facility_data[(Facility_data["Facility"] == whonow)]
 test_fund = Funding[(Funding["Facility"] == whonow)]
 facility_name = whonow
-
 generatePdf(facility_name, test_facs, test_fund, current_year)
-
-# for facility in complete_reporting_data.keys():
-# 	# Run PDF generation for each facility
-# 	generatePdf(facility, complete_reporting_data[facility], current_year)
