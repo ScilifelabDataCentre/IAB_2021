@@ -90,7 +90,6 @@ Funding_comb_group = Funding_comb.groupby(["Group_finance"]).sum().reset_index()
 Funding_comb_group["Funding_MSEK"] = (
     (Funding_comb_group["Amount (kSEK)"] / 1000).round().astype(int)
 )
-print(Funding_comb_group)
 
 
 fig = go.Figure(
@@ -120,4 +119,4 @@ if not os.path.isdir("Plots/Fund_Pies"):
     os.mkdir("Plots/Fund_Pies")
 # fig.show()
 
-fig.write_image("Plots/Fund_Pies/total_fund_SLLandext.pdf", scale=3)
+fig.write_image("Plots/Fund_Pies/total_fund_SLLandext.svg", scale=3)
