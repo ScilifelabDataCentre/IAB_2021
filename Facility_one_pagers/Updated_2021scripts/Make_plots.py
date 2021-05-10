@@ -61,7 +61,8 @@ def Aff_pies_func(input):
 
     fig.update_traces(
         textposition="outside",
-        texttemplate="%{label} (%{percent})",
+        texttemplate="%{label} (%{percent:.1%f})",
+        # the :.1%f does to 1 decimal place. do .0 to round to whole numbers. HOWEVER! whole numbers tend to give 0% as a value. Wouldnt recommend
     )  # textinfo="percent+label")
     fig.update_layout(
         margin=dict(
@@ -137,7 +138,8 @@ def Aff_pies_func_stacked_text(input):
 
     fig.update_traces(
         textposition="outside",
-        texttemplate="%{label} <br>(%{percent})",
+        texttemplate="%{label} <br>(%{percent:.1%f})",
+        # the :.1%f does to 1 decimal place. do .0 to round to whole numbers. HOWEVER! whole numbers tend to give 0% as a value. Wouldnt recommend
     )  # texttemplate="%{label} (%{percent})")
 
     fig.update_layout(
