@@ -17,6 +17,8 @@ Acaduser_data = pd.read_excel(
     keep_default_na=False,
 )
 
+# OO requested percentages rounded to nearest percent for this graph
+Acaduser_data["Round_perc"] = (Acaduser_data["Percent"] * 100).round().astype(int)
 
 colours = [
     SCILIFE_COLOURS[2],
@@ -44,7 +46,7 @@ Acaduser_data["Academic User affiliation"] = Acaduser_data[
 
 fig = go.Figure(
     go.Pie(
-        values=Acaduser_data["Percent"],
+        values=Acaduser_data["Round_perc"],
         labels=Acaduser_data["Academic User affiliation"],
         hole=0.6,
         marker=dict(colors=colours, line=dict(color="#000000", width=1)),
@@ -55,7 +57,7 @@ fig = go.Figure(
 
 fig.update_traces(
     textposition="outside",
-    texttemplate="%{label} <br>(%{percent})",
+    texttemplate="%{label} <br>(%{value}%)",
 )
 fig.update_layout(
     margin=dict(l=200, r=200, b=200, t=200),
