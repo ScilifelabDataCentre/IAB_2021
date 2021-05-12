@@ -119,11 +119,16 @@ pubs_fund_data = pd.merge(
 pubs_fund_data.loc[22, "Count"] = 20
 # For the above, I checked the number of publications for Mass Cytometry (LiU)
 # and set the appropriate value (20) to the row for Mass Cytometry (KI) in the 'Count' column
+# OO requested that units with no publications were dropped (might drop anyway with log, but ensuring that they are dropped)
+pubs_fund_data.dropna(subset=["Count"], inplace=True)
+print(pubs_fund_data)
 pubs_fund_data["log_Count"] = np.log10(pubs_fund_data["Count"])
 pubs_fund_data["log_Fund"] = np.log10(pubs_fund_data["SEK"])
-pubs_fund_data["log_Count"] = pubs_fund_data["log_Count"].fillna(0)
-# print(pubs_fund_data["log_Count"])
-# NEED TO CHECK DETAILS WITH LARS!
+# OO needs 2 versions - compute and storage is an outlier, so need one fig with it and one without
+pubs_fund_data = pubs_fund_data[
+    ~pubs_fund_data.Facility.str.contains("Compute and Storage")
+]
+# comment out the above to include compute and storage
 
 colours = [
     SCILIFE_COLOURS[1],
@@ -185,4 +190,5 @@ fig.update_yaxes(
 if not os.path.isdir("Plots"):
     os.mkdir("Plots")
 
-fig.show()
+# fig.show()
+# fig.write_image("Plots/Fund_pub_scatter_noCS.svg", scale=3)
