@@ -121,7 +121,6 @@ pubs_fund_data.loc[22, "Count"] = 20
 # and set the appropriate value (20) to the row for Mass Cytometry (KI) in the 'Count' column
 # OO requested that units with no publications were dropped (might drop anyway with log, but ensuring that they are dropped)
 pubs_fund_data.dropna(subset=["Count"], inplace=True)
-print(pubs_fund_data)
 pubs_fund_data["log_Count"] = np.log10(pubs_fund_data["Count"])
 pubs_fund_data["log_Fund"] = np.log10(pubs_fund_data["SEK"])
 # OO needs 2 versions - compute and storage is an outlier, so need one fig with it and one without
@@ -191,4 +190,98 @@ if not os.path.isdir("Plots"):
     os.mkdir("Plots")
 
 # fig.show()
+# print the version with compute and storage
+# fig.write_image("Plots/Fund_pub_scatter.svg", scale=3)
+# print the version without compute and storage
 # fig.write_image("Plots/Fund_pub_scatter_noCS.svg", scale=3)
+
+# Asked by OO for two versions, one with user fees included in the total funding
+# the one above doesnt have user fees. Only need to change the funding data part
+
+User_fees = Facility_data[["Facility", "Platform", "User Fees 2020 Total (kSEK)"]]
+User_fees.insert(loc=2, column="Financier", value="User fees")
+User_fees.rename(
+    columns={"User Fees 2020 Total (kSEK)": "Amount (kSEK)"},
+    inplace=True,
+)
+Funding_comb_user = pd.concat([Funding_comb, User_fees])
+tot_fund_user = Funding_comb_user.groupby(["Facility", "Platform"]).sum().reset_index()
+tot_fund_user.insert(loc=3, column="SEK", value=(tot_fund_user["Amount (kSEK)"] * 1000))
+tot_fund_user = tot_fund_user.drop(
+    [
+        "Amount (kSEK)",
+    ],
+    axis=1,
+)
+# check that these look right
+# print(tot_fund.head())
+# print(tot_fund_user.head())
+pubs_fund_data_user = pd.merge(
+    tot_fund_user,
+    count_pub,
+    how="left",
+    left_on="Facility",
+    right_on="Facility",
+)
+pubs_fund_data_user.loc[22, "Count"] = 20
+# For the above, I checked the number of publications for Mass Cytometry (LiU)
+# and set the appropriate value (20) to the row for Mass Cytometry (KI) in the 'Count' column
+# OO requested that units with no publications were dropped (might drop anyway with log, but ensuring that they are dropped)
+pubs_fund_data_user.dropna(subset=["Count"], inplace=True)
+pubs_fund_data_user["log_Count"] = np.log10(pubs_fund_data_user["Count"])
+pubs_fund_data_user["log_Fund"] = np.log10(pubs_fund_data_user["SEK"])
+# OO needs 2 versions - compute and storage is an outlier, so need one fig with it and one without
+pubs_fund_data_user = pubs_fund_data_user[
+    ~pubs_fund_data_user.Facility.str.contains("Compute and Storage")
+]
+
+# Now to plot this as a scatter plot
+fig_u = px.scatter(
+    pubs_fund_data_user,
+    x="log_Fund",
+    y="log_Count",
+    color="Platform",
+    color_discrete_sequence=colours,
+)
+
+fig_u.update_traces(
+    marker=dict(size=20, line=dict(width=2, color="black")), cliponaxis=False
+)
+
+fig_u.update_layout(
+    plot_bgcolor="white",
+    font=dict(size=18),
+    margin=dict(r=0, t=0, b=0, l=0),
+    width=2500,
+    height=1000,
+    showlegend=True,
+    legend=dict(
+        title=" ", orientation="h", yanchor="bottom", y=1, xanchor="right", x=1
+    ),
+)
+
+# modify x-axis
+fig_u.update_xaxes(
+    title="Total Funding (log10)",
+    showgrid=True,
+    linecolor="black",
+)
+
+max_pubs = max(pubs_fund_data_user["log_Count"])
+
+# modify y-axis
+fig_u.update_yaxes(
+    title="Publications (log10)<br>",  # keep the break to give y-axis title space between graph
+    showgrid=True,
+    gridcolor="black",
+    linecolor="black",
+    range=[0, max_pubs * 1.15],
+)
+if not os.path.isdir("Plots"):
+    os.mkdir("Plots")
+
+# fig_u.show()
+# print the version with compute and storage
+# fig_u.write_image("Plots/Fund_pub_scatter_user.svg", scale=3)
+# print the version without compute and storage
+# fig_u.write_image("Plots/Fund_pub_scatter_noCS_user.svg", scale=3)
