@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
+import os
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 
 # already worked out total funding as tot_fund
 # and facility data is uploaded from there too - can use FTEs from there - also need to log
@@ -120,6 +122,7 @@ tot_fund_nouser = (
     Funding_comb_nouser.groupby(["Facility", "Platform"]).sum().reset_index()
 )
 tot_fund_user = Funding_comb_user.groupby(["Facility", "Platform"]).sum().reset_index()
+
 tot_fund_nouser.insert(
     loc=3, column="Total SEK", value=(tot_fund_nouser["Amount (kSEK)"] * 1000)
 )
@@ -132,18 +135,25 @@ tot_fund_user.insert(
 
 # The above will give you the totals that can be used for the x-axis
 # need to figure out portions for the pie charts (portion of userfees vs sll funding vs other funding)
-
+# original values in ksek, so *1000 converts to just SEK
+# fill value is to fill in where there is 0 'other funding'
 fin_fund_nouser = (
     Funding_comb_nouser.groupby(["Facility", "Platform", "Financier"])
     .sum()
+    .unstack(fill_value=0)
+    .stack()
     .reset_index()
 )
 fin_fund_nouser["Other fund SEK"] = fin_fund_nouser["Amount (kSEK)"] * 1000
+
 fin_fund_user = (
-    Funding_comb_user.groupby(["Facility", "Platform", "Financier"]).sum().reset_index()
+    Funding_comb_user.groupby(["Facility", "Platform", "Financier"])
+    .sum()
+    .unstack(fill_value=0)
+    .stack()
+    .reset_index()
 )
 fin_fund_user["Other fund SEK"] = fin_fund_user["Amount (kSEK)"] * 1000
-
 
 # add column for totals to fin_fund_nouser and fin_fund_user
 # after this, work out proportions that will be used in pie charts
@@ -182,11 +192,11 @@ props_nouser["Prop_funding"] = (
 FTE_data = Facility_data[["Facility", "FTEs"]]
 # Total SEK is the values in SEK
 nouser_fund = tot_fund_nouser[["Facility", "Total SEK"]]
-user_fund = tot_fund_nouser[["Facility", "Total SEK"]]
+user_fund = tot_fund_user[["Facility", "Total SEK"]]
 # need to log total values and FTEs
 FTE_data["log_FTE"] = np.log10(FTE_data["FTEs"])
-nouser_fund["log_Total SEK"] = np.log10(nouser_fund["Total SEK"])
-user_fund["log_Total SEK"] = np.log10(user_fund["Total SEK"])
+nouser_fund["log_Total_SEK"] = np.log10(nouser_fund["Total SEK"])
+user_fund["log_Total_SEK"] = np.log10(user_fund["Total SEK"])
 # make separate df for the user and nouser total
 
 axes_nouser = pd.merge(
@@ -205,43 +215,87 @@ axes_user = pd.merge(
     right_on="Facility",
 )
 
-# Now lets work out how to extract ratios
-check = props_user[props_user["Facility"] == "Advanced Light Microscopy"]
-check = props_user[["Financier", "Prop_funding"]]
-check = dict(check.values)
-print(check.get("SciLifeLab"))
-
-# TURN ABOVE INTO LOOP USE IT TO GET PROPS FOR PIES
-# USE AXES TO GIVE X AND Y
-# PUT THIS WITHIN THE PLOTS BELOW
-
-
-# # Draw all your plots (essentially lots of pie plots on a single plot)
-# fig, ax = plt.subplots()
-# right_side = ax.spines["right"]
-# right_side.set_visible(False)
-# top_side = ax.spines["top"]
-# top_side.set_visible(False)
-# plt.grid(axis="y", color="DarkSlateGrey", linestyle="-", linewidth=1)
-# drawPieMarker(
-#     xs=0.2,
-#     ys=0.2,
-#     ratios=[0.5, 0.5],
-#     sizes=[150],
-#     colors=["cyan", "orange", "teal"],
-# )
-# drawPieMarker(
-#     xs=np.random.rand(2),
-#     ys=np.random.rand(2),
-#     ratios=[0.33, 0.66],
-#     sizes=[100, 120],
-#     colors=["blue", "yellow"],
-# )
-# drawPieMarker(
-#     xs=np.random.rand(2),
-#     ys=np.random.rand(2),
-#     ratios=[0.33, 0.25],
-#     sizes=[50, 75],
-#     colors=["maroon", "brown"],
-# )
+# Draw plot with user fees NOT included
+fig, ax = plt.subplots(figsize=(30, 30))
+right_side = ax.spines["right"]
+right_side.set_visible(False)
+top_side = ax.spines["top"]
+top_side.set_visible(False)
+plt.grid(axis="y", color="DarkSlateGrey", linestyle="-", linewidth=0.5)
+for i in props_nouser["Facility"].unique():
+    check = props_nouser[props_nouser["Facility"] == i]
+    other = axes_nouser[axes_nouser["Facility"] == i]
+    check = check[["Financier", "Prop_funding"]]
+    check = dict(check.values)
+    drawPieMarker(
+        xs=float(other.log_Total_SEK),
+        ys=float(other.log_FTE),
+        ratios=list(check.values()),
+        sizes=[500],
+        colors=[SCILIFE_COLOURS[8], SCILIFE_COLOURS[0], SCILIFE_COLOURS[12]],
+    )
+# set these limits to be appropriate for IAB 2021 results. might need change for other years.
+plt.ylim(-0.1, 2.25)
+plt.xlim(5.0, 8.0)
+# \n just gives a line of space
+plt.xlabel("\nTotal funding (log10)", fontsize=30)
+plt.ylabel("FTE (log10) \n", fontsize=30)
+plt.xticks(fontsize=22)
+plt.yticks(fontsize=22)
+Other_fund = mpatches.Patch(color=SCILIFE_COLOURS[8], label="Other funding")
+SciLifeLab_fund = mpatches.Patch(color=SCILIFE_COLOURS[0], label="SciLifeLab funding")
+plt.legend(
+    handles=[Other_fund, SciLifeLab_fund],
+    bbox_to_anchor=(1.05, 1.05),
+    ncol=2,
+    handlelength=0.7,
+    frameon=False,
+    fontsize=30,
+)
 # plt.show()
+if not os.path.isdir("Plots"):
+    os.mkdir("Plots")
+plt.savefig("Plots/FundvsFTEs_nouserfees.svg", dpi=300)
+
+# Draw plot with user fees included
+fig, ax = plt.subplots(figsize=(30, 30))
+right_side = ax.spines["right"]
+right_side.set_visible(False)
+top_side = ax.spines["top"]
+top_side.set_visible(False)
+plt.grid(axis="y", color="DarkSlateGrey", linestyle="-", linewidth=0.5)
+for i in props_user["Facility"].unique():
+    check = props_user[props_user["Facility"] == i]
+    other = axes_user[axes_user["Facility"] == i]
+    check = check[["Financier", "Prop_funding"]]
+    check = dict(check.values)
+    drawPieMarker(
+        xs=float(other.log_Total_SEK),
+        ys=float(other.log_FTE),
+        ratios=list(check.values()),
+        sizes=[500],
+        colors=[SCILIFE_COLOURS[8], SCILIFE_COLOURS[0], SCILIFE_COLOURS[12]],
+    )
+# set these limits to be appropriate for IAB 2021 results. might need change for other years.
+plt.ylim(-0.1, 2.25)
+plt.xlim(5.0, 8.0)
+# \n just gives a line of space
+plt.xlabel("\nTotal funding (log10)", fontsize=30)
+plt.ylabel("FTE (log10) \n", fontsize=30)
+plt.xticks(fontsize=22)
+plt.yticks(fontsize=22)
+Other_fund = mpatches.Patch(color=SCILIFE_COLOURS[8], label="Other funding")
+SciLifeLab_fund = mpatches.Patch(color=SCILIFE_COLOURS[0], label="SciLifeLab funding")
+U_fees = mpatches.Patch(color=SCILIFE_COLOURS[12], label="User fees")
+plt.legend(
+    handles=[Other_fund, SciLifeLab_fund, U_fees],
+    bbox_to_anchor=(1.05, 1.05),
+    ncol=3,
+    handlelength=0.7,
+    frameon=False,
+    fontsize=30,
+)
+# plt.show()
+if not os.path.isdir("Plots"):
+    os.mkdir("Plots")
+plt.savefig("Plots/FundvsFTEs_userfees.svg", dpi=300)
