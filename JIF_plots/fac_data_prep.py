@@ -161,7 +161,7 @@ JIF_merge_fullnames.rename(
 
 JIF_merge_fullnames.to_excel("Check_me_manual_improve.xlsx")
 
-# Match this to the database with the labels seperated (easiest way to seperate out labels)
+# # segment up the JIFs to groups
 
 JIF_merge_fullnames["JIF"] = JIF_merge_fullnames["JIF"].fillna(-1)
 
