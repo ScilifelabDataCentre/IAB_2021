@@ -1,3 +1,10 @@
+*.svg
+*.pdf
+*.xlsx
+*.numbers
+*.jpeg
+*.png
+
 venv
 *~
 config.yaml
