@@ -4,6 +4,7 @@
 *.numbers
 *.jpeg
 *.png
+ARCHIVE
 
 venv
 *~
