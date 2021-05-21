@@ -161,7 +161,7 @@ def JIF_graph_func(input, name):
     fig.update_yaxes(
         title=" ",
         showgrid=True,
-        gridcolor="black",
+        gridcolor="lightgrey",
         linecolor="black",
         dtick=yaxis_tick,
         range=[0, int(highest_y_value * 1.15)],
@@ -176,4 +176,4 @@ def JIF_graph_func(input, name):
 
 # JIF_graph_func(JIF_sub_group_fac, "facilities")
 # JIF_graph_func(JIF_sub_group_fell, "fellows")
-JIF_graph_func(JIF_sub_group_aff, "affiliates")
+# JIF_graph_func(JIF_sub_group_aff, "affiliates")
