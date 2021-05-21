@@ -154,7 +154,7 @@ Funding_max = max(Funding_grpmax["Mfunds"])
 fig.update_yaxes(
     title="Funding (MSEK)<br>",  # keep the break to give y-axis title space between graph
     showgrid=True,
-    gridcolor="black",
+    gridcolor="lightgrey",
     linecolor="black",
     dtick=10,  # 10 will work fine with most values
     range=[0, int(Funding_max * 1.15)],
@@ -162,4 +162,4 @@ fig.update_yaxes(
 if not os.path.isdir("Plots"):
     os.mkdir("Plots")
 # fig.show()
-fig.write_image("Plots/Unitfunding_barchart_2020.svg")
+fig.write_image("Plots/Unitfunding_barchart_2020_v2.svg")
