@@ -1,6 +1,6 @@
 """ This script creates the individual JIF plots for facs/affs/fells.
 currently includes years 2013-20, uncomment year 9 next year to add 2021"""
-
+# Fellows might need to be only 14-20
 import pandas as pd
 import os
 import plotly.graph_objects as go
@@ -11,13 +11,17 @@ from colour_science_2020 import (
     SCILIFE_COLOURS,
 )
 
+# facilities data
 from fac_data_prep import JIF_sub_group_fac
 
+# fellows data
+from fell_data_prep import JIF_sub_group_fell
 
-# need to modify this to work for overall
+# affiliates data
+from aff_data_prep import JIF_sub_group_aff
 
 
-def JIF_graph_func(input):
+def JIF_graph_func(input, name):
     JIFcounts = input
     # split down dataframes to enable stacking
     UnknownJIF = JIFcounts[(JIFcounts["JIFcat"] == "JIF unknown")]
@@ -89,7 +93,7 @@ def JIF_graph_func(input):
         title=" ",
         showgrid=True,
         linecolor="black",
-        # add more years as needed - this starts it at 2013 for 2020
+        # add more years as needed
         ticktext=[
             "<b>" + Years[0] + "</b>",
             "<b>" + Years[1] + "</b>",
@@ -165,9 +169,11 @@ def JIF_graph_func(input):
     if not os.path.isdir("Plots/"):
         os.mkdir("Plots/")
     # fig.show()
-    fig.write_image("Plots/facilities_JIF.svg")
+    fig.write_image("Plots/{}_JIF.svg".format(name))
 
 
 # make plots by applying function
 
-JIF_graph_func(JIF_sub_group_fac)
+# JIF_graph_func(JIF_sub_group_fac, "facilities")
+# JIF_graph_func(JIF_sub_group_fell, "fellows")
+JIF_graph_func(JIF_sub_group_aff, "affiliates")
