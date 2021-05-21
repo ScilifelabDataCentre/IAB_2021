@@ -221,7 +221,7 @@ right_side = ax.spines["right"]
 right_side.set_visible(False)
 top_side = ax.spines["top"]
 top_side.set_visible(False)
-plt.grid(axis="y", color="DarkSlateGrey", linestyle="-", linewidth=0.5)
+plt.grid(axis="y", color="lightgrey", linestyle="-", linewidth=0.5)
 for i in props_nouser["Facility"].unique():
     check = props_nouser[props_nouser["Facility"] == i]
     other = axes_nouser[axes_nouser["Facility"] == i]
@@ -255,7 +255,7 @@ plt.legend(
 # plt.show()
 if not os.path.isdir("Plots"):
     os.mkdir("Plots")
-plt.savefig("Plots/FundvsFTEs_nouserfees.svg", dpi=300)
+plt.savefig("Plots/FundvsFTEs_nouserfees_v2.svg", dpi=300)
 
 # Draw plot with user fees included
 fig, ax = plt.subplots(figsize=(30, 30))
@@ -263,7 +263,7 @@ right_side = ax.spines["right"]
 right_side.set_visible(False)
 top_side = ax.spines["top"]
 top_side.set_visible(False)
-plt.grid(axis="y", color="DarkSlateGrey", linestyle="-", linewidth=0.5)
+plt.grid(axis="y", color="lightgrey", linestyle="-", linewidth=0.5)
 for i in props_user["Facility"].unique():
     check = props_user[props_user["Facility"] == i]
     other = axes_user[axes_user["Facility"] == i]
@@ -298,4 +298,4 @@ plt.legend(
 # plt.show()
 if not os.path.isdir("Plots"):
     os.mkdir("Plots")
-plt.savefig("Plots/FundvsFTEs_userfees.svg", dpi=300)
+plt.savefig("Plots/FundvsFTEs_userfees_v2.svg", dpi=300)
