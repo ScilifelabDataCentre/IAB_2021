@@ -32,6 +32,7 @@ Pubs_JIF_raw = Pubs_JIF_raw[
 
 Pubs_JIF_sub = Pubs_JIF_raw[
     [
+        "UT",
         "Title",
         "Publication_year",
         "Journal",
@@ -66,7 +67,7 @@ JIF_merge_abbnames = pd.merge(
 )
 
 
-JIF_merge_abbnames.drop_duplicates(subset="Title", keep="first", inplace=True)
+JIF_merge_abbnames.drop_duplicates(subset="UT", keep="first", inplace=True)
 
 JIF_merge_abbnames = JIF_merge_abbnames.drop(
     [
@@ -84,7 +85,7 @@ JIF_merge_fullnames = pd.merge(
     right_on="Full Journal Title",
 )
 
-JIF_merge_fullnames.drop_duplicates(subset="Title", keep="first", inplace=True)
+JIF_merge_fullnames.drop_duplicates(subset="UT", keep="first", inplace=True)
 
 
 JIF_merge_fullnames["Impact Factor without Journal Self Cites_y"] = JIF_merge_fullnames[
