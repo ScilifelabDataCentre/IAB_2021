@@ -69,7 +69,6 @@ title_words_fac_year1 = ""
 title_words_fac_year2 = ""
 
 # pick the column you want to import words from df.columnname
-# fellows title for date range and invidiual years
 for val in Facilities_data_range.Title:
     val = str(val)
     tokens = val.split()
@@ -109,7 +108,6 @@ title_words_aff_year1 = ""
 title_words_aff_year2 = ""
 
 # pick the column you want to import words from df.columnname
-# fellows title for date range and invidiual years
 for val in Affiliates_data_range.Title:
     val = str(val)
     tokens = val.split()
