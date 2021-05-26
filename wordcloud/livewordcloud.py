@@ -27,15 +27,11 @@ for val in df.title:
     title_words += " ".join(tokens) + " "
 
 # to make a square shaped wordcloud
-mask = np.array(
-    Image.open(
-        "/Users/liahu895/Documents/GitHub/IAB_scripts_2021/wordcloud/SciLifeLab_symbol_POS.png"
-    )
-)
+mask = np.array(Image.open("SciLifeLab_symbol_POS.png"))
 
 # COVID portal visual identity
 # add font
-font_path = "/Users/liahu895/Documents/GitHub/IAB_scripts_2021/wordcloud/Lato-Bold.ttf"
+font_path = "Lato-Bold.ttf"
 
 # give colours
 def multi_color_func(
@@ -69,6 +65,7 @@ wordcloud = WordCloud(
 ).generate(title_words)
 
 # plot the WordCloud image
+# line below might how red under figsize, but no issue.
 plt.figure(figsize=(10, 10), facecolor=None)
 plt.imshow(wordcloud)
 plt.axis("off")
