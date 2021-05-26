@@ -35,9 +35,66 @@ from titles_data_prep import (
 
 
 # add whatever words you'd like to exclude
-stopwords_fell = list(STOPWORDS) + ["None", "s", "using", "without", "de"]
-stopwords_fac = list(STOPWORDS) + ["None", "s", "de", "using", "without", "situ"]
-stopwords_aff = list(STOPWORDS) + ["None", "s", "de", "using", "without"]
+stopwords_fell = list(STOPWORDS) + [
+    "None",
+    "s",
+    "de",
+    "using",
+    "without",
+    "risk",
+    "effect",
+    "associated",
+    "impact",
+    "potential",
+    "association",
+    "two",
+    "one",
+    "three",
+    "reveal",
+    "reveals",
+    "analysis",
+    "study",
+]
+stopwords_fac = list(STOPWORDS) + [
+    "None",
+    "s",
+    "de",
+    "using",
+    "without",
+    "risk",
+    "effect",
+    "associated",
+    "impact",
+    "potential",
+    "association",
+    "two",
+    "one",
+    "three",
+    "reveal",
+    "reveals",
+    "analysis",
+    "study",
+]
+stopwords_aff = list(STOPWORDS) + [
+    "None",
+    "s",
+    "de",
+    "using",
+    "without",
+    "risk",
+    "effect",
+    "associated",
+    "impact",
+    "potential",
+    "association",
+    "two",
+    "one",
+    "three",
+    "reveal",
+    "reveals",
+    "analysis",
+    "study",
+]
 
 
 # to make a square shaped wordcloud
@@ -95,13 +152,13 @@ def maketitlewordcloud(data, Thresh_num, group_name, stopwords):
 
 
 # note - 50 as a threshold for collocation is typically sufficient to stop weird word combinations in bigrams, but increase if strange 2 word phrases appear
-# maketitlewordcloud(title_words_fell_range, 50, "fell_title_2years", stopwords_fell)
-# maketitlewordcloud(
-#     title_words_fell_year1, 50, "fell_title_{}".format(year1), stopwords_fell
-# )
-# maketitlewordcloud(
-#     title_words_fell_year2, 50, "fell_title_{}".format(year2), stopwords_fell
-# )
+maketitlewordcloud(title_words_fell_range, 10, "fell_title_2years", stopwords_fell)
+maketitlewordcloud(
+    title_words_fell_year1, 10, "fell_title_{}".format(year1), stopwords_fell
+)
+maketitlewordcloud(
+    title_words_fell_year2, 10, "fell_title_{}".format(year2), stopwords_fell
+)
 maketitlewordcloud(title_words_fac_range, 10, "fac_title_2years", stopwords_fac)
 maketitlewordcloud(
     title_words_fac_year1, 10, "fac_title_{}".format(year1), stopwords_fac
@@ -109,10 +166,10 @@ maketitlewordcloud(
 maketitlewordcloud(
     title_words_fac_year2, 10, "fac_title_{}".format(year2), stopwords_fac
 )
-# maketitlewordcloud(title_words_aff_range, 10, "aff_title_2years", stopwords_aff)
-# maketitlewordcloud(
-#     title_words_aff_year1, 10, "aff_title_{}".format(year1), stopwords_aff
-# )
-# maketitlewordcloud(
-#     title_words_aff_year2, 10, "aff_title_{}".format(year2), stopwords_aff
-# )
+maketitlewordcloud(title_words_aff_range, 10, "aff_title_2years", stopwords_aff)
+maketitlewordcloud(
+    title_words_aff_year1, 10, "aff_title_{}".format(year1), stopwords_aff
+)
+maketitlewordcloud(
+    title_words_aff_year2, 10, "aff_title_{}".format(year2), stopwords_aff
+)
