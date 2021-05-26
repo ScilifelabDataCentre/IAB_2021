@@ -13,15 +13,6 @@ Fellows_data = pd.read_excel(
 )
 
 Fellows_data = Fellows_data.rename(columns={"KeywordPlus list": "keywordPlus_list"})
-Fellows_data["keywordPlus_list"] = (
-    Fellows_data["keywordPlus_list"].astype(str).str.title()
-)
-Fellows_data["keywordPlus_list"] = Fellows_data["keywordPlus_list"].replace(
-    "Dna", "DNA"
-)
-Fellows_data["keywordPlus_list"] = Fellows_data["keywordPlus_list"].replace(
-    "Rna", "RNA"
-)
 
 
 # input the years that you're considering (IAB 2021 - 2019 and 2020)
@@ -69,15 +60,6 @@ Facilities_data = pd.read_excel(
 Facilities_data = Facilities_data.rename(
     columns={"KeywordPlus list": "keywordPlus_list"}
 )
-Facilities_data["keywordPlus_list"] = (
-    Facilities_data["keywordPlus_list"].astype(str).str.title()
-)
-Facilities_data["keywordPlus_list"] = Facilities_data["keywordPlus_list"].replace(
-    "Dna", "DNA"
-)
-Facilities_data["keywordPlus_list"] = Facilities_data["keywordPlus_list"].replace(
-    "Rna", "RNA"
-)
 
 
 # Need data from last 2 years for overall wordcloud
@@ -120,15 +102,6 @@ Affiliates_data = pd.read_excel(
 
 Affiliates_data = Affiliates_data.rename(
     columns={"KeywordPlus list": "keywordPlus_list"}
-)
-Affiliates_data["keywordPlus_list"] = (
-    Affiliates_data["keywordPlus_list"].astype(str).str.title()
-)
-Affiliates_data["keywordPlus_list"] = Affiliates_data["keywordPlus_list"].replace(
-    "Dna", "DNA"
-)
-Affiliates_data["keywordPlus_list"] = Affiliates_data["keywordPlus_list"].replace(
-    "Rna", "RNA"
 )
 
 # Need data from last 2 years for overall wordcloud

@@ -38,14 +38,40 @@ from WOS_key_data_prep import (
 stopwords_fell = list(STOPWORDS) + [
     "None",
     "s",
+    "expression",
+    "insights",
+    "alpha",
+    "acid",
+    "identification",
+    "initiation",
+    "reveal",
+    "reveals",
+    "design",
+    "2A",
 ]
 stopwords_fac = list(STOPWORDS) + [
     "None",
     "s",
+    "expression",
+    "insights",
+    "alpha",
+    "acid",
+    "identification",
+    "initiation",
+    "reveal",
+    "reveals",
 ]
 stopwords_aff = list(STOPWORDS) + [
     "None",
     "s",
+    "expression",
+    "insights",
+    "alpha",
+    "acid",
+    "identification",
+    "initiation",
+    "reveal",
+    "reveals",
 ]
 
 
