@@ -146,14 +146,43 @@ make_ideogram_arc(1.3, [11 * pi / 6, pi / 17])
 labels = labels
 
 # set colours to SciLifeLab visual identity
+# to set colours randomly
+# ideo_colors = [
+#     "rgba(4, 92, 100, 0.75)",
+#     "rgba(167, 201, 71, 0.75)",
+#     "rgba(76, 151, 159, 0.75)",
+#     "rgba(166, 166, 166, 0.75)",
+#     "rgba(73, 31, 83, 0.75)",
+#     "rgba(63, 63, 63, 0.75)",
+# ] * 6
+
 ideo_colors = [
-    "rgba(4, 92, 100, 0.75)",
-    "rgba(167, 201, 71, 0.75)",
-    "rgba(76, 151, 159, 0.75)",
-    "rgba(166, 166, 166, 0.75)",
-    "rgba(73, 31, 83, 0.75)",
-    "rgba(63, 63, 63, 0.75)",
-] * 6
+    "rgba(166, 166, 166, 0.75)",  # Cellular and molecular imaging platform
+    "rgba(76, 151, 159, 0.75)",  # Bioinformatics platform
+    "rgba(63, 63, 63, 0.75)",  # chemical biology and genome engineering
+    "rgba(4, 92, 100, 0.75)",  # diagnostics dev platform
+    "rgba(76, 151, 159, 0.75)",  # Bioinformatics platform
+    "rgba(166, 166, 166, 0.75)",  # Cellular and molecular imaging platform
+    "rgba(167, 201, 71, 0.75)",  # genomics platform
+    "rgba(167, 201, 71, 0.75)",  # genomics platform
+    "rgba(76, 151, 159, 0.75)",  # Bioinformatics platform
+    "rgba(0, 0, 0, 0.75)",  # drug discovery any development
+    "rgba(63, 63, 63, 0.75)",  # chemical biology and genome engineering
+    "rgba(4, 92, 100, 0.75)",  # diagnostics dev platform
+    "rgba(166, 166, 166, 0.75)",  # Cellular and molecular imaging platform
+    "rgba(167, 201, 71, 0.75)",  # genomics platform
+    "rgba(167, 201, 71, 0.75)",  # genomics platform
+    "rgba(166, 166, 166, 0.75)",  # Cellular and molecular imaging platform
+    "rgba(73, 31, 83, 0.75)",  # proteomics and metabolomics
+    "rgba(73, 31, 83, 0.75)",  # proteomics and metabolomics
+    "rgba(63, 63, 63, 0.75)",  # chemical biology and genome engineering
+    "rgba(73, 31, 83, 0.75)",  # proteomics and metabolomics
+    "rgba(4, 92, 100, 0.75)",  # diagnostics dev platform
+    "rgba(73, 31, 83, 0.75)",  # proteomics and metabolomics
+    "rgba(73, 31, 83, 0.75)",  # proteomics and metabolomics
+    "rgba(4, 92, 100, 0.75)",  # diagnostics dev platform
+    "rgba(166, 166, 166, 0.75)",  # Cellular and molecular imaging platform
+]
 # *n multiplies the list n times
 # increase colours in list/n to add more colours
 
@@ -464,4 +493,4 @@ for i, m in enumerate(labels):
 # fig.show()
 if not os.path.isdir("Plots"):
     os.mkdir("Plots")
-fig.write_image("Plots/collabcircosplots.svg", scale=3)
+fig.write_image("Plots/collabcircosplots_platcolours.svg", scale=3)
