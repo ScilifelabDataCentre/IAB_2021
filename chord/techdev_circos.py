@@ -444,7 +444,7 @@ layout["shapes"] = shapes
 fig = go.Figure(data=data, layout=layout)
 fig.update_layout(plot_bgcolor="white")
 # will need to change this to ensure plot looks circular
-fig.update_layout(autosize=False, width=1450, height=850)
+fig.update_layout(autosize=False, width=1400, height=850)
 
 # Add labels centrally on outer edge of respective ideogram 'slice'
 # int portion set labels at centre point on outer circle edge
