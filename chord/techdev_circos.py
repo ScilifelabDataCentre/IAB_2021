@@ -471,4 +471,4 @@ for i, m in enumerate(labels):
 # fig.show()
 if not os.path.isdir("Plots"):
     os.mkdir("Plots")
-fig.write_image("Plots/techdevcollabplots.svg", scale=3)
+fig.write_image("Plots/techdevcollabplots.png", scale=3)
