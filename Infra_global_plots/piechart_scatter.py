@@ -231,7 +231,7 @@ for i in props_nouser["Facility"].unique():
         xs=float(other.log_Total_SEK),
         ys=float(other.log_FTE),
         ratios=list(check.values()),
-        sizes=[500],
+        sizes=[1000],
         colors=[SCILIFE_COLOURS[8], SCILIFE_COLOURS[0], SCILIFE_COLOURS[12]],
     )
 # set these limits to be appropriate for IAB 2021 results. might need change for other years.
@@ -255,7 +255,7 @@ plt.legend(
 # plt.show()
 if not os.path.isdir("Plots"):
     os.mkdir("Plots")
-plt.savefig("Plots/FundvsFTEs_nouserfees_v2.svg", dpi=300)
+plt.savefig("Plots/FundvsFTEs_nouserfees_v2.png", dpi=300)
 
 # Draw plot with user fees included
 fig, ax = plt.subplots(figsize=(30, 30))
@@ -273,7 +273,7 @@ for i in props_user["Facility"].unique():
         xs=float(other.log_Total_SEK),
         ys=float(other.log_FTE),
         ratios=list(check.values()),
-        sizes=[500],
+        sizes=[1000],
         colors=[SCILIFE_COLOURS[8], SCILIFE_COLOURS[0], SCILIFE_COLOURS[12]],
     )
 # set these limits to be appropriate for IAB 2021 results. might need change for other years.
@@ -298,4 +298,4 @@ plt.legend(
 # plt.show()
 if not os.path.isdir("Plots"):
     os.mkdir("Plots")
-plt.savefig("Plots/FundvsFTEs_userfees_v2.svg", dpi=300)
+plt.savefig("Plots/FundvsFTEs_userfees_v2.png", dpi=300)

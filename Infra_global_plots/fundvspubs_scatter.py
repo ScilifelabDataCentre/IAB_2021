@@ -124,10 +124,10 @@ pubs_fund_data.dropna(subset=["Count"], inplace=True)
 pubs_fund_data["log_Count"] = np.log10(pubs_fund_data["Count"])
 pubs_fund_data["log_Fund"] = np.log10(pubs_fund_data["SEK"])
 # OO needs 2 versions - compute and storage is an outlier, so need one fig with it and one without
-# pubs_fund_data = pubs_fund_data[
-#     ~pubs_fund_data.Facility.str.contains("Compute and Storage")
-# ]
-# comment out the above to include compute and storage
+pubs_fund_data = pubs_fund_data[
+    ~pubs_fund_data.Facility.str.contains("Compute and Storage")
+]
+# comment out the above to exclude compute and storage
 
 colours = [
     SCILIFE_COLOURS[1],
@@ -191,9 +191,9 @@ if not os.path.isdir("Plots"):
 
 # fig.show()
 # print the version with compute and storage
-fig.write_image("Plots/Fund_pub_scatter_v2.svg", scale=3)
+# fig.write_image("Plots/Fund_pub_scatter_v2.png", scale=3)
 # print the version without compute and storage
-fig.write_image("Plots/Fund_pub_scatter_noCS_v2.svg", scale=3)
+fig.write_image("Plots/Fund_pub_scatter_noCS_v2.png", scale=3)
 
 # Asked by OO for two versions, one with user fees included in the total funding
 # the one above doesnt have user fees. Only need to change the funding data part
@@ -231,9 +231,9 @@ pubs_fund_data_user.dropna(subset=["Count"], inplace=True)
 pubs_fund_data_user["log_Count"] = np.log10(pubs_fund_data_user["Count"])
 pubs_fund_data_user["log_Fund"] = np.log10(pubs_fund_data_user["SEK"])
 # OO needs 2 versions - compute and storage is an outlier, so need one fig with it and one without
-# pubs_fund_data_user = pubs_fund_data_user[
-#     ~pubs_fund_data_user.Facility.str.contains("Compute and Storage")
-# ]
+pubs_fund_data_user = pubs_fund_data_user[
+    ~pubs_fund_data_user.Facility.str.contains("Compute and Storage")
+]
 
 # Now to plot this as a scatter plot
 fig_u = px.scatter(
@@ -282,6 +282,6 @@ if not os.path.isdir("Plots"):
 
 # fig_u.show()
 # print the version with compute and storage
-# fig_u.write_image("Plots/Fund_pub_scatter_user_v2.svg", scale=3)
+# fig_u.write_image("Plots/Fund_pub_scatter_user_v2.png", scale=3)
 # print the version without compute and storage
-fig_u.write_image("Plots/Fund_pub_scatter_noCS_user_v2.svg", scale=3)
+fig_u.write_image("Plots/Fund_pub_scatter_noCS_user_v2.png", scale=3)

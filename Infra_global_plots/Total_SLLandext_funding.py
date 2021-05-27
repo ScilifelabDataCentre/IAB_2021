@@ -115,8 +115,8 @@ fig.update_layout(
     height=1000,
     autosize=False,
 )
-if not os.path.isdir("Plots/Fund_Pies"):
-    os.mkdir("Plots/Fund_Pies")
+if not os.path.isdir("Plots"):
+    os.mkdir("Plots")
 # fig.show()
 
-fig.write_image("Plots/Fund_Pies/total_fund_SLLandext.svg", scale=3)
+fig.write_image("Plots/total_fund_SLLandext.png", scale=3)

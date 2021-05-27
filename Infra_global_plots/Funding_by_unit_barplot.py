@@ -162,4 +162,4 @@ fig.update_yaxes(
 if not os.path.isdir("Plots"):
     os.mkdir("Plots")
 # fig.show()
-fig.write_image("Plots/Unitfunding_barchart_2020_v2.svg")
+fig.write_image("Plots/Unitfunding_barchart_2020_v2.png")

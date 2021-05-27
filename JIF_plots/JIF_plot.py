@@ -169,7 +169,7 @@ def JIF_graph_func(input, name):
     if not os.path.isdir("Plots/"):
         os.mkdir("Plots/")
     # fig.show()
-    fig.write_image("Plots/{}_JIF.svg".format(name))
+    fig.write_image("Plots/{}_JIF.png".format(name))
 
 
 # make plots by applying function
