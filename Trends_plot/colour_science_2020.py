@@ -89,23 +89,23 @@ COLOURS = {
     ],
 }
 SCILIFE_COLOURS = [
-    "#A7C947",
+    "#A7C947",  # green
     "#E9F2D1",
     "#D3E4A3",
     "#BDD775",
-    "#045C64",
+    "#045C64",  # teal
     "#C0D6D8",
     "#82AEB2",
     "#43858B",
-    "#4C979F",
+    "#4C979F",  # aqua
     "#D2E5E7",
     "#A6CBCF",
     "#79B1B7",
-    "#491F53",
+    "#491F53",  # purple
     "#D2C7D4",
     "#A48FA9",
     "#77577E",
-    "#E5E5E5",
+    "#E5E5E5",  # greys
     "#A6A6A6",
     "#3F3F3F",
 ]
@@ -180,13 +180,13 @@ FACILITY_USER_AFFILIATION_COLOUR_OFFICIAL_ABB = {
 
 
 def hex_to_RGB(hex):
-    """ "#FFFFFF" -> [255,255,255] """
+    """ "#FFFFFF" -> [255,255,255]"""
     # Pass 16 to the integer function for change of base
     return [int(hex[i : i + 2], 16) for i in range(1, 6, 2)]
 
 
 def RGB_to_hex(RGB):
-    """ [255,255,255] -> "#FFFFFF" """
+    """[255,255,255] -> "#FFFFFF" """
     # Components need to be integers for hex to make sense
     RGB = [int(x) for x in RGB]
     return "#" + "".join(
