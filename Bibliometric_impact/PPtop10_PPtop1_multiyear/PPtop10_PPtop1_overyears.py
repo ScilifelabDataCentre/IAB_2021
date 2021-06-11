@@ -28,6 +28,12 @@ Fellows_data_sub = Fellows_data[
 ]
 
 Fellows_data_sub = Fellows_data_sub[
+    (Fellows_data_sub["Doc_type_code_rev"] == "RV")
+    | (Fellows_data_sub["Doc_type_code_rev"] == "AR")
+    | (Fellows_data_sub["Doc_type_code_rev"] == "PP")
+]
+
+Fellows_data_sub = Fellows_data_sub[
     Fellows_data_sub["top10_scxw0"].str.contains("None") == False
 ]
 
@@ -63,6 +69,12 @@ Affiliates_data = pd.read_excel(
 Affiliates_data_sub = Affiliates_data[
     (Affiliates_data["Publication_year"] > 2012)
     & (Affiliates_data["Publication_year"] < 2019)
+]
+
+Affiliates_data_sub = Affiliates_data_sub[
+    (Affiliates_data_sub["Doc_type_code_rev"] == "RV")
+    | (Affiliates_data_sub["Doc_type_code_rev"] == "AR")
+    | (Affiliates_data_sub["Doc_type_code_rev"] == "PP")
 ]
 
 Affiliates_data_sub = Affiliates_data_sub[
@@ -102,6 +114,12 @@ Facilities_data = pd.read_excel(
 Facilities_data_sub = Facilities_data[
     (Facilities_data["Publication_year"] > 2012)
     & (Facilities_data["Publication_year"] < 2019)
+]
+
+Facilities_data_sub = Facilities_data_sub[
+    (Facilities_data_sub["Doc_type_code_rev"] == "RV")
+    | (Facilities_data_sub["Doc_type_code_rev"] == "AR")
+    | (Facilities_data_sub["Doc_type_code_rev"] == "PP")
 ]
 
 Facilities_data_sub = Facilities_data_sub[
@@ -202,7 +220,8 @@ def PPtop10_graph_func_facoraff(input, pub_group):
     if not os.path.isdir("Plots/"):
         os.mkdir("Plots/")
     # fig.show()
-    fig.write_image("Plots/{}_PPtop10_overyears.svg".format(pub_group))
+    fig.write_image("Plots/{}_PPtop10_overyears_arttypes.svg".format(pub_group))
+    fig.write_image("Plots/{}_PPtop10_overyears_arttypes.png".format(pub_group))
 
 
 def PPtop10_graph_func_fell(input, pub_group):
@@ -277,7 +296,8 @@ def PPtop10_graph_func_fell(input, pub_group):
     if not os.path.isdir("Plots/"):
         os.mkdir("Plots/")
     # fig.show()
-    fig.write_image("Plots/{}_PPtop10_overyears.svg".format(pub_group))
+    fig.write_image("Plots/{}_PPtop10_overyears_arttypes.svg".format(pub_group))
+    fig.write_image("Plots/{}_PPtop10_overyears_arttypes.png".format(pub_group))
 
 
 def PPtop1_graph_func_facoraff(input, pub_group):
@@ -352,7 +372,8 @@ def PPtop1_graph_func_facoraff(input, pub_group):
     if not os.path.isdir("Plots/"):
         os.mkdir("Plots/")
     # fig.show()
-    fig.write_image("Plots/{}_PPtop1_overyears.svg".format(pub_group))
+    fig.write_image("Plots/{}_PPtop1_overyears_arttypes.svg".format(pub_group))
+    fig.write_image("Plots/{}_PPtop1_overyears_arttypes.png".format(pub_group))
 
 
 def PPtop1_graph_func_fell(input, pub_group):
@@ -427,7 +448,8 @@ def PPtop1_graph_func_fell(input, pub_group):
     if not os.path.isdir("Plots/"):
         os.mkdir("Plots/")
     # fig.show()
-    fig.write_image("Plots/{}_PPtop1_overyears.svg".format(pub_group))
+    fig.write_image("Plots/{}_PPtop1_overyears_arttypes.svg".format(pub_group))
+    fig.write_image("Plots/{}_PPtop1_overyears_arttypes.png".format(pub_group))
 
 
 # make plots by applying function
