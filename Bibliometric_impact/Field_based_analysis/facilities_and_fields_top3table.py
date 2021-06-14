@@ -252,5 +252,5 @@ fig = go.Figure(
 )
 # fig.show()
 fig.update_layout(autosize=False, margin={"l": 0, "r": 0, "t": 0, "b": 0}, height=1350)
-fig.write_image("Plots/Bubbleplot_facstop6fields.png")
-fig.write_image("Plots/Bubbleplot_facstop6fields.svg")
+fig.write_image("Plots/Main3categories_unit_nocs.png")
+fig.write_image("Plots/Main3categories_unit_nocs.svg")
