@@ -1,0 +1,426 @@
+label;replace by
+aalto university;
+aarhus university;
+aarhus university hospitals;
+abo akademi university;
+academy of athens;
+academy of sciences of the czech republic;
+adam mickiewicz university in poznan;
+addis ababa university (aau);
+agency for science technology and research (a*star);
+aix-marseille university;
+albanova university centre;albanova university centre
+albert ludwig university of freiburg;
+amedeo avogadro univ eastern piedmont;
+aristotle university of thessaloniki;
+arizona state university;
+arup laboratories;
+astrazeneca;
+austrian academy of sciences;
+barcelona institute of science and technology;
+baylor college of medicine;
+beijing university of chemical technology;
+bgi group;
+bielefeld university;
+bigelow lab ocean sci;
+bioinformatics infrastructure for life sciences (bils);bioinformatics infrastructure for life sciences
+biomeditech;
+boston children's hospital;
+boston university;
+brigham health;
+broad institute;
+brookhaven national laboratory;
+cardiff university;
+carlos iii health institute;
+catalan institution for research and advanced studies;
+catholic university of leuven;
+cea;
+cellutech;cellutech ab
+centre for research & technology - hellas (certh);
+chalmers university of technology;chalmers university of technology
+charles university in prague;
+chinese academy of sciences;
+colorado state university;
+columbia university;
+copenhagen university hospitals;
+cornell university;
+ctr nacl anal genom;
+ctr res & technol hellas;
+dalarna university college;dalarna university college
+dalhousie university;
+dana-farber cancer institute;
+danderyds sjukhus;danderyds sjukhus
+danish cancer society;
+desy;
+dortmund university of technology;
+duke university;
+emory university;
+erasmus mc;
+erasmus university rotterdam;
+eth zurich;
+european bioinformatics institute (embl-ebi);
+european molecular biology laboratory (embl);
+european synchrotron radiation facility (esrf);
+eötvös loránd university;
+finland natl publ hlth inst;
+folkhälsan research center;
+foundation for research & technology – hellas (forth);
+framingham heart study (fhs) nhlbi;
+francis crick institute;
+fred hutchinson cancer research center;
+free university of brussels;
+freie universität berlin;
+french institute of health and medical research;
+french national centre for scientific research;
+friedrich-alexander-universität erlangen-nürnberg;
+g papanicolaou hosp;
+ge healthcare;
+german cancer research center;
+german center for diabetes research (dzd);
+german research center for environmental health - helmholtz zentrum münchen;
+ghent university;
+giessen university;
+goethe university frankfurt;
+great ormond street hospital (gosh);
+grenoble alpes university;
+gustave roussy;
+guys and st thomas nhs foundation trust;
+gävleborg county council;gävleborg county council
+hannover medical school;
+harvard t.h. chan school of public health (harvard school of public health);
+harvard university;
+haukeland university hospital;
+hebrew university of jerusalem;
+heidelberg university;
+heinrich heine univ düsseldorf;
+helmholtz centre for environmental research (ufz);
+helsinki university central hospital;
+hokkaido university;
+hosp clin barcelona;
+hospital for sick children;
+hudsonalpha institute for biotechnology;
+human prot atlas project;The human protein atlas
+humboldt-universität zu berlin;
+hungarian academy of sciences;
+hôpital universitaire pitié-salpêtrière;
+icahn school of medicine at mount sinai;
+ifom - the firc institute of molecular oncology;
+imperial college london;
+innsbruck medical university;
+inserm;
+institute for systems biology;
+institute of applied genomics (iga);
+institute of cancer research (icr);
+institute of cardiometabolism and nutrition (ican);
+irccs ospedale san raffaele;
+irccs san raffaele sci inst;
+j. craig venter institute (jcvi);
+jagiellonian university in krakow;
+johannes gutenberg university of mainz;
+johns hopkins university;
+julius maximilian university of wurzburg;
+karolinska institutet;karolinska institute
+karolinska university hospital;karolinska university hospital
+kiel university;
+king abdulaziz university (kau);
+king abdullah university of science and technology;
+king's college london;
+korea advanced institute of science and technology;
+kth royal institute of technology;kth royal institute of technology
+kuopio university hospital;
+la trobe university;
+lab surgpath;
+labores;
+laval university;
+lawrence berkeley national lab;
+leibniz institute for baltic sea research (iow);
+leibniz institute of freshwater ecology and inland fisheries (igb);
+leiden university;
+linköping university;linköping university
+linköping university hospital;linköping university hospital
+linnaeus university;linnaeus university
+linnean centre of plant biology;linnean centre of plant biology
+lomonosov moscow state university;
+ludwig institute for cancer research;
+ludwig maximilian university of munich;
+lund university;lund university
+manipal academy of higher education;
+masaryk university;
+massachusetts general hospital;
+massachusetts institute of technology;
+max delbrück center for molecular medicine in the helmholtz association (mdc);
+max planck society for the advancement of science (mpg);
+mayo clinic;
+mcgill university;
+mcgill university and genome quebec innovation centre;
+mcmaster university;
+med univ gdansk;
+medical products agency;medical products agency
+medical university of graz;
+medical university of vienna;
+memorial sloan kettering cancer center;
+michigan state university;
+monash university;
+mrc laboratory of molecular biology (lmb);
+nagoya university;
+nanjing normal university (nnu);
+nanyang technological university;
+national academy of sciences of ukraine;
+national and kapodistrian university of athens;
+national bioinformatics infrastructure sweden;national bioinformatics infrastructure sweden
+national board of forensic medicine;national board of forensic medicine
+national cancer institute;
+national cheng kung university;
+national heart lung;
+national institute of advanced industrial science and technology;
+national institute of agricultural research (inra);
+national institute of agronomic research;
+national institutes of health;
+national research council (cnr);
+national university of singapore;
+netherlands cancer institute;
+new york university;
+newcastle university;
+nih national cancer institute;
+nikea gen hosp;
+norrland's university hospital;norrland's university hospital
+north carolina state university;
+north shore long isl jewish hlth syst;
+northeastern university;
+northwestern university;
+norwegian institute of public health;
+norwegian university of life sciences;
+norwegian university of science and technology;
+novo nordisk;
+ohio state university;
+olink proteomics ab;olink proteomics ab
+oregon health & science university;
+oslo university hospital;
+oulu university central hospital;
+pakistan institute of engineering and applied sciences (pieas);
+palacky university;
+paris descartes university;
+paris diderot university;
+paris sciences & lettres - psl research university;
+pasteur institute;
+paul scherrer institute;
+peking university;
+pennsylvania state university;
+pfizer;
+polish academy of science;
+pompeu fabra university;
+pontifical catholic university of chile;
+public health agency of sweden;public health agency of sweden
+qimr berghofer medical research institute;
+queen mary university of london;
+radboud university nijmegen;
+riken;
+rise - research institutes of sweden;rise - research institutes of sweden
+roche holding ag;
+royal bournemouth hosp;
+royal netherlands academy of arts and sciences (knaw);
+russian academy of sciences;
+rutgers university;
+rwth aachen university;
+saarland university;
+safarik univ;
+sahlgrenska university hospital;sahlgrenska university hospital
+salahaddin university-erbil;
+sci life lab;scilifelab
+sci life lab scilifelab;scilifelab
+scripps research;
+semmelweis university;
+shahid beheshti univ med sci;
+shanghai jiao tong university;
+sib swiss institute of bioinformatics;
+skåne university hospital;skåne university hospital
+sorbonne paris cité university (uspc);
+spanish national cancer research centre;
+spanish national research council (csic);
+ssi;ssi
+stanford university;
+stavanger university hospital;
+stellenbosch university;
+stockholm bioinformatrics center;stockholm bioinformatrics center
+stockholm university;stockholm university
+stockholms läns landsting;Stockholm Regional Council 
+sun yat-sen university;
+swedish e-science research center;swedish e-science research center
+swedish e-science research centre (serc);swedish e-science research center
+swedish museum of natural history;swedish museum of natural history
+swedish national veterinary institute;swedish national veterinary institute
+swedish orphan biovitrum ab;swedish orphan biovitrum ab
+swedish university of agricultural sciences;swedish university of agricultural sciences
+swiss federal institute of technology lausanne (epfl);
+södersjukhuset;södersjukhuset
+södertörns university college;södertörns university college
+tampere university hospital;
+tampere university of technology;
+tata institute of fundamental research (tifr);
+technical university of denmark (dtu);
+technical university of munich;
+technion - israel institute of technology;
+tel aviv university;
+texas a&m university - college station;
+the centre for genomic regulation (crg);
+the national human genome research institute;
+the university of montana;
+thermo fisher scientific;
+tufts university;
+turku university hospital;
+umeå university;umeå university
+united states department of energy;
+univ hosp brno;
+univ med greifswald;
+universidad autónoma de barcelona;
+universidade de são paulo;
+university college dublin;
+university college london;
+university medical center hamburg-eppendorf;
+university of aberdeen;
+university of adelaide;
+university of alabama at birmingham;
+university of alberta;
+university of amsterdam;
+university of antwerp;
+university of barcelona;
+university of basel;
+university of bergen;
+university of birmingham;
+university of bonn;
+university of bordeaux;
+university of bristol;
+university of british columbia;
+university of cagliari;
+university of california berkeley;
+university of california davis;
+university of california irvine;
+university of california los angeles;
+university of california san diego;
+university of california san francisco;
+university of california santa cruz;
+university of cambridge;
+university of chicago;
+university of cologne;
+university of colorado boulder;
+university of copenhagen;
+university of crete;
+university of debrecen;
+university of duisburg-essen;
+university of dundee;
+university of east anglia;
+university of eastern finland;
+university of edinburgh;
+university of exeter;
+university of florida;
+university of geneva;
+university of georgia;
+university of glasgow;
+university of gothenburg;university of gothenburg
+university of groningen;
+university of göttingen;
+university of hamburg;
+university of helsinki;
+university of hong kong;
+university of houston;
+university of iceland;
+university of jena;
+university of johannesburg;
+university of jyvaskyla;
+university of kentucky;
+university of kwazulu-natal;
+university of lausanne;
+university of leeds;
+university of leicester;
+university of lisbon;
+university of liverpool;
+university of liège;
+university of luxembourg;
+university of lyon;
+university of manchester;
+university of manitoba;
+university of massachusetts;
+university of melbourne;
+university of michigan;
+university of milan;
+university of minnesota;
+university of montpellier;
+university of montreal;
+university of namur;
+university of new south wales;
+university of north carolina at chapel hill;
+university of nottingham;
+university of oslo;
+university of otago;
+university of ottawa;
+university of oulu;
+university of oxford;
+university of padova;
+university of paris-saclay;
+university of paris-sud 11;
+university of patras;
+university of pennsylvania;
+university of perugia;
+university of porto;
+university of potsdam;
+university of pretoria;
+university of queensland;
+university of rennes 1;
+university of salamanca;
+university of science and technology beijing;
+university of seville;
+university of sheffield;
+university of southampton;
+university of southern california;
+university of southern denmark;
+university of st andrews;
+university of strasbourg;
+university of stuttgart;
+university of sussex;
+university of sydney;
+university of szeged;
+university of tartu;
+university of texas at austin;
+university of texas md anderson cancer center;
+university of texas southwestern medical center at dallas;
+university of the basque country (upv/ehu);
+university of the witwatersrand;
+university of tokyo;
+university of toronto;
+university of toulouse;
+university of tromsø;
+university of tsukuba;
+university of turku;
+university of tübingen;
+university of udine ;
+university of ulm;
+university of utah;
+university of valencia;
+university of vienna;
+university of virginia;
+university of warsaw;
+university of washington;
+university of western australia;
+university of wisconsin–stevens point (uwsp);
+university of york;
+university of zagreb;
+university of zurich;
+university pierre and marie curie;
+universität leipzig;
+université catholique de louvain;
+uppsala university;uppsala university
+uppsala university hospital;uppsala university hospital
+utrecht university;
+vanderbilt university;
+virginia polytechnic institute and state university;
+vita-salute san raffaele university (unisr);
+vu university amsterdam;
+wageningen university and research centre;
+washington university in st. louis;
+weizmann institute of science;
+wellcome sanger institute;
+yale university;
+zhejiang university;
+örebro university;örebro university
+örebro university hospital;örebro university hospital
+östergötland county council;östergötland county council

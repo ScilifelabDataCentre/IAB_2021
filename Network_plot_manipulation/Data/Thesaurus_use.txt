@@ -1,0 +1,25 @@
+label;replace by
+centre for research & technology - hellas (certh);centre for research & technology - Hellas
+ctr res & technol hellas;centre for research & technology - Hellas
+danish cancer society;danish cancer society Research Center
+finland natl publ hlth inst;National Public Health Institute of Finland
+g papanicolaou hosp;George Papanikolaou General Hospital of Thessaloniki
+german research center for environmental health - helmholtz zentrum münchen;helmholtz zentrum münchen
+king abdulaziz university (kau);king abdulaziz university
+max planck society for the advancement of science (mpg);max planck society
+nikea gen hosp;General Hospital of Nikea
+royal bournemouth hosp;royal bournemouth hospital
+sib swiss institute of bioinformatics;swiss institute of bioinformatics
+spanish national research council (csic);spanish national research council
+technical university of denmark (dtu);technical university of denmark
+texas a&m university - college station;texas a&m university
+university of california berkeley;university of california, berkeley
+university pierre and marie curie;pierre and marie curie university
+vita-salute san raffaele university (unisr);vita-salute san raffaele university
+bioinformatics infrastructure for life sciences (bils);bioinformatics infrastructure for life sciences
+human prot atlas project;The Human Protein Atlas
+cellutech;cellutech ab
+sci life lab;scilifelab
+sci life lab scilifelab;scilifelab
+stockholms läns landsting;Stockholm Regional Council 
+swedish e-science research centre (serc);swedish e-science research center
