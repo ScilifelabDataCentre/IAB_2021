@@ -46,7 +46,7 @@ IEC_data = IEC_data.drop([11, 12])
 textsize = 20
 colours = [
     SCILIFE_COLOURS[8],
-    SCILIFE_COLOURS[12],
+    SCILIFE_COLOURS[14],
     SCILIFE_COLOURS[4],
     SCILIFE_COLOURS[0],
     SCILIFE_COLOURS[12],
@@ -70,7 +70,7 @@ fig = px.scatter(
 )
 # fig.update_traces(textposition="top right")
 fig.update_traces(
-    marker=dict(size=20, line=dict(width=2, color="black")), cliponaxis=False
+    marker=dict(size=40, line=dict(width=2, color="black")), cliponaxis=False
 )
 
 fig.update_layout(
@@ -138,7 +138,7 @@ fig.add_annotation(
         x=IEC_data.Uni_grade[2],
         y=IEC_data.IEC_grade[2],
         ax=0,
-        ay=-30,
+        ay=-50,
         showarrow=True,
         text=IEC_data.Name[2],
     )
@@ -150,7 +150,7 @@ fig.add_annotation(
         x=IEC_data.Uni_grade[3],
         y=IEC_data.IEC_grade[3],
         ax=0,
-        ay=-30,
+        ay=-50,
         showarrow=True,
         text=IEC_data.Name[3],
     )
@@ -162,7 +162,7 @@ fig.add_annotation(
         x=IEC_data.Uni_grade[4],
         y=IEC_data.IEC_grade[4],
         ax=0,
-        ay=-30,
+        ay=-50,
         showarrow=True,
         text=IEC_data.Name[4],
     )
@@ -174,7 +174,7 @@ fig.add_annotation(
         x=IEC_data.Uni_grade[5],
         y=IEC_data.IEC_grade[5],
         ax=0,
-        ay=-30,
+        ay=-50,
         showarrow=True,
         text=IEC_data.Name[5],
     )
@@ -210,7 +210,7 @@ fig.add_annotation(
         x=IEC_data.Uni_grade[8],
         y=IEC_data.IEC_grade[8],
         ax=0,
-        ay=-30,
+        ay=-50,
         showarrow=True,
         text=IEC_data.Name[8],
     )
@@ -234,7 +234,7 @@ fig.add_annotation(
         x=IEC_data.Uni_grade[10],
         y=IEC_data.IEC_grade[10],
         ax=0,
-        ay=30,
+        ay=50,
         showarrow=True,
         text=IEC_data.Name[10],
     )
@@ -378,7 +378,7 @@ fig.add_annotation(
         x=IEC_data.Uni_grade[26],
         y=IEC_data.IEC_grade[26],
         ax=0,
-        ay=-30,
+        ay=-40,
         showarrow=True,
         text=IEC_data.Name[26],
     )
@@ -475,7 +475,7 @@ fig.add_annotation(
         x=IEC_data.Uni_grade[39],
         y=IEC_data.IEC_grade[39],
         ax=0,
-        ay=120,
+        ay=140,
         showarrow=True,
         arrowcolor="white",
         text="and " + IEC_data.Name[39],
@@ -522,4 +522,5 @@ if not os.path.isdir("Plots"):
     os.mkdir("Plots")
 
 # fig.show()
-fig.write_image("Plots/IEC_scores_labels.svg", scale=3)
+fig.write_image("Plots/IEC_scores_largermarkersv1_labels.svg", scale=3)
+fig.write_image("Plots/IEC_scores_largermarkersv1_labels.png", scale=3)
