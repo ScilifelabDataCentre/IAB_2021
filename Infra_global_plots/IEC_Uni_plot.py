@@ -75,13 +75,13 @@ fig.update_traces(
 
 fig.update_layout(
     plot_bgcolor="white",
-    font=dict(size=26),
+    font=dict(size=32),
     margin=dict(r=0, t=0, b=0, l=0),
     width=2500,
     height=1500,
     showlegend=True,
     legend=dict(
-        title="SciLifeLab Facility Since:    ",
+        title="SciLifeLab Infrastructure Unit Since:    ",
         orientation="h",
         yanchor="bottom",
         y=1,
@@ -94,6 +94,7 @@ fig.update_layout(
 fig.update_xaxes(
     title="<br>University Mean Grade",
     showgrid=True,
+    gridcolor="lightgrey",
     linecolor="black",
 )
 
@@ -108,419 +109,419 @@ fig.update_yaxes(
     # range=[0, max_pubs * 1.15],
 )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[0],
-        y=IEC_data.IEC_grade[0],
-        ax=0,
-        ay=-70,
-        showarrow=True,
-        text=IEC_data.Name[0],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[0],
+#         y=IEC_data.IEC_grade[0],
+#         ax=0,
+#         ay=-70,
+#         showarrow=True,
+#         text=IEC_data.Name[0],
+#     )
+# )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[1],
-        y=IEC_data.IEC_grade[1],
-        ax=0,
-        ay=120,
-        showarrow=True,
-        text=IEC_data.Name[1],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[1],
+#         y=IEC_data.IEC_grade[1],
+#         ax=0,
+#         ay=120,
+#         showarrow=True,
+#         text=IEC_data.Name[1],
+#     )
+# )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[2],
-        y=IEC_data.IEC_grade[2],
-        ax=0,
-        ay=-50,
-        showarrow=True,
-        text=IEC_data.Name[2],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[2],
+#         y=IEC_data.IEC_grade[2],
+#         ax=0,
+#         ay=-50,
+#         showarrow=True,
+#         text=IEC_data.Name[2],
+#     )
+# )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[3],
-        y=IEC_data.IEC_grade[3],
-        ax=0,
-        ay=-50,
-        showarrow=True,
-        text=IEC_data.Name[3],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[3],
+#         y=IEC_data.IEC_grade[3],
+#         ax=0,
+#         ay=-50,
+#         showarrow=True,
+#         text=IEC_data.Name[3],
+#     )
+# )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[4],
-        y=IEC_data.IEC_grade[4],
-        ax=0,
-        ay=-50,
-        showarrow=True,
-        text=IEC_data.Name[4],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[4],
+#         y=IEC_data.IEC_grade[4],
+#         ax=0,
+#         ay=-50,
+#         showarrow=True,
+#         text=IEC_data.Name[4],
+#     )
+# )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[5],
-        y=IEC_data.IEC_grade[5],
-        ax=0,
-        ay=-50,
-        showarrow=True,
-        text=IEC_data.Name[5],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[5],
+#         y=IEC_data.IEC_grade[5],
+#         ax=0,
+#         ay=-50,
+#         showarrow=True,
+#         text=IEC_data.Name[5],
+#     )
+# )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[6],
-        y=IEC_data.IEC_grade[6],
-        ax=0,
-        ay=-30,
-        showarrow=True,
-        text=IEC_data.Name[6],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[6],
+#         y=IEC_data.IEC_grade[6],
+#         ax=0,
+#         ay=-30,
+#         showarrow=True,
+#         text=IEC_data.Name[6],
+#     )
+# )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[7],
-        y=IEC_data.IEC_grade[7],
-        ax=0,
-        ay=70,
-        showarrow=True,
-        text=IEC_data.Name[7],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[7],
+#         y=IEC_data.IEC_grade[7],
+#         ax=0,
+#         ay=70,
+#         showarrow=True,
+#         text=IEC_data.Name[7],
+#     )
+# )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[8],
-        y=IEC_data.IEC_grade[8],
-        ax=0,
-        ay=-50,
-        showarrow=True,
-        text=IEC_data.Name[8],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[8],
+#         y=IEC_data.IEC_grade[8],
+#         ax=0,
+#         ay=-50,
+#         showarrow=True,
+#         text=IEC_data.Name[8],
+#     )
+# )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[9],
-        y=IEC_data.IEC_grade[9],
-        ax=0,
-        ay=50,
-        showarrow=True,
-        text=IEC_data.Name[9],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[9],
+#         y=IEC_data.IEC_grade[9],
+#         ax=0,
+#         ay=50,
+#         showarrow=True,
+#         text=IEC_data.Name[9],
+#     )
+# )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[10],
-        y=IEC_data.IEC_grade[10],
-        ax=0,
-        ay=50,
-        showarrow=True,
-        text=IEC_data.Name[10],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[10],
+#         y=IEC_data.IEC_grade[10],
+#         ax=0,
+#         ay=50,
+#         showarrow=True,
+#         text=IEC_data.Name[10],
+#     )
+# )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[13],
-        y=IEC_data.IEC_grade[13],
-        ax=0,
-        ay=-50,
-        showarrow=True,
-        text=IEC_data.Name[13],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[13],
+#         y=IEC_data.IEC_grade[13],
+#         ax=0,
+#         ay=-50,
+#         showarrow=True,
+#         text=IEC_data.Name[13],
+#     )
+# )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[14],
-        y=IEC_data.IEC_grade[14],
-        ax=0,
-        ay=-50,
-        showarrow=True,
-        text=IEC_data.Name[14],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[14],
+#         y=IEC_data.IEC_grade[14],
+#         ax=0,
+#         ay=-50,
+#         showarrow=True,
+#         text=IEC_data.Name[14],
+#     )
+# )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[15],
-        y=IEC_data.IEC_grade[15],
-        ax=0,
-        ay=-50,
-        showarrow=True,
-        text=IEC_data.Name[15],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[15],
+#         y=IEC_data.IEC_grade[15],
+#         ax=0,
+#         ay=-50,
+#         showarrow=True,
+#         text=IEC_data.Name[15],
+#     )
+# )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[16],
-        y=IEC_data.IEC_grade[16],
-        ax=0,
-        ay=90,
-        showarrow=True,
-        text=IEC_data.Name[16],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[16],
+#         y=IEC_data.IEC_grade[16],
+#         ax=0,
+#         ay=90,
+#         showarrow=True,
+#         text=IEC_data.Name[16],
+#     )
+# )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[17],
-        y=IEC_data.IEC_grade[17],
-        ax=0,
-        ay=50,
-        showarrow=True,
-        text=IEC_data.Name[17],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[17],
+#         y=IEC_data.IEC_grade[17],
+#         ax=0,
+#         ay=50,
+#         showarrow=True,
+#         text=IEC_data.Name[17],
+#     )
+# )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[18],
-        y=IEC_data.IEC_grade[18],
-        ax=0,
-        ay=-150,
-        showarrow=True,
-        text=IEC_data.Name[18],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[18],
+#         y=IEC_data.IEC_grade[18],
+#         ax=0,
+#         ay=-150,
+#         showarrow=True,
+#         text=IEC_data.Name[18],
+#     )
+# )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[21],
-        y=IEC_data.IEC_grade[21],
-        ax=0,
-        ay=-50,
-        showarrow=True,
-        text=IEC_data.Name[21],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[21],
+#         y=IEC_data.IEC_grade[21],
+#         ax=0,
+#         ay=-50,
+#         showarrow=True,
+#         text=IEC_data.Name[21],
+#     )
+# )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[22],
-        y=IEC_data.IEC_grade[22],
-        ax=0,
-        ay=50,
-        showarrow=True,
-        text=IEC_data.Name[22],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[22],
+#         y=IEC_data.IEC_grade[22],
+#         ax=0,
+#         ay=50,
+#         showarrow=True,
+#         text=IEC_data.Name[22],
+#     )
+# )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[23],
-        y=IEC_data.IEC_grade[23],
-        ax=0,
-        ay=120,
-        showarrow=True,
-        text=IEC_data.Name[23],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[23],
+#         y=IEC_data.IEC_grade[23],
+#         ax=0,
+#         ay=120,
+#         showarrow=True,
+#         text=IEC_data.Name[23],
+#     )
+# )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[24],
-        y=IEC_data.IEC_grade[24],
-        ax=0,
-        ay=50,
-        showarrow=True,
-        text=IEC_data.Name[24],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[24],
+#         y=IEC_data.IEC_grade[24],
+#         ax=0,
+#         ay=50,
+#         showarrow=True,
+#         text=IEC_data.Name[24],
+#     )
+# )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[25],
-        y=IEC_data.IEC_grade[25],
-        ax=0,
-        ay=-100,
-        showarrow=True,
-        text=IEC_data.Name[25],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[25],
+#         y=IEC_data.IEC_grade[25],
+#         ax=0,
+#         ay=-100,
+#         showarrow=True,
+#         text=IEC_data.Name[25],
+#     )
+# )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[26],
-        y=IEC_data.IEC_grade[26],
-        ax=0,
-        ay=-40,
-        showarrow=True,
-        text=IEC_data.Name[26],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[26],
+#         y=IEC_data.IEC_grade[26],
+#         ax=0,
+#         ay=-40,
+#         showarrow=True,
+#         text=IEC_data.Name[26],
+#     )
+# )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[27],
-        y=IEC_data.IEC_grade[27],
-        ax=0,
-        ay=-50,
-        showarrow=True,
-        text=IEC_data.Name[27],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[27],
+#         y=IEC_data.IEC_grade[27],
+#         ax=0,
+#         ay=-50,
+#         showarrow=True,
+#         text=IEC_data.Name[27],
+#     )
+# )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[31],
-        y=IEC_data.IEC_grade[31],
-        ax=0,
-        ay=-70,
-        showarrow=True,
-        text=IEC_data.Name[31],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[31],
+#         y=IEC_data.IEC_grade[31],
+#         ax=0,
+#         ay=-70,
+#         showarrow=True,
+#         text=IEC_data.Name[31],
+#     )
+# )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[32],
-        y=IEC_data.IEC_grade[32],
-        ax=0,
-        ay=50,
-        showarrow=True,
-        text=IEC_data.Name[32],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[32],
+#         y=IEC_data.IEC_grade[32],
+#         ax=0,
+#         ay=50,
+#         showarrow=True,
+#         text=IEC_data.Name[32],
+#     )
+# )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[33],
-        y=IEC_data.IEC_grade[33],
-        ax=0,
-        ay=50,
-        showarrow=True,
-        text=IEC_data.Name[33],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[33],
+#         y=IEC_data.IEC_grade[33],
+#         ax=0,
+#         ay=50,
+#         showarrow=True,
+#         text=IEC_data.Name[33],
+#     )
+# )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[34],
-        y=IEC_data.IEC_grade[34],
-        ax=0,
-        ay=50,
-        showarrow=True,
-        text=IEC_data.Name[34],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[34],
+#         y=IEC_data.IEC_grade[34],
+#         ax=0,
+#         ay=50,
+#         showarrow=True,
+#         text=IEC_data.Name[34],
+#     )
+# )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[35],
-        y=IEC_data.IEC_grade[35],
-        ax=0,
-        ay=50,
-        showarrow=True,
-        text=IEC_data.Name[35],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[35],
+#         y=IEC_data.IEC_grade[35],
+#         ax=0,
+#         ay=50,
+#         showarrow=True,
+#         text=IEC_data.Name[35],
+#     )
+# )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[36],
-        y=IEC_data.IEC_grade[36],
-        ax=0,
-        ay=50,
-        showarrow=True,
-        text=IEC_data.Name[36],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[36],
+#         y=IEC_data.IEC_grade[36],
+#         ax=0,
+#         ay=50,
+#         showarrow=True,
+#         text=IEC_data.Name[36],
+#     )
+# )
 
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[39],
-        y=IEC_data.IEC_grade[39],
-        ax=0,
-        ay=140,
-        showarrow=True,
-        arrowcolor="white",
-        text="and " + IEC_data.Name[39],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[39],
+#         y=IEC_data.IEC_grade[39],
+#         ax=0,
+#         ay=140,
+#         showarrow=True,
+#         arrowcolor="white",
+#         text="and " + IEC_data.Name[39],
+#     )
+# )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[37],
-        y=IEC_data.IEC_grade[37],
-        ax=0,
-        ay=100,
-        showarrow=True,
-        text=IEC_data.Name[37],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[37],
+#         y=IEC_data.IEC_grade[37],
+#         ax=0,
+#         ay=100,
+#         showarrow=True,
+#         text=IEC_data.Name[37],
+#     )
+# )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[38],
-        y=IEC_data.IEC_grade[38],
-        ax=0,
-        ay=50,
-        showarrow=True,
-        text=IEC_data.Name[38],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[38],
+#         y=IEC_data.IEC_grade[38],
+#         ax=0,
+#         ay=50,
+#         showarrow=True,
+#         text=IEC_data.Name[38],
+#     )
+# )
 
-fig.add_annotation(
-    dict(
-        font=dict(color="black", size=textsize),
-        x=IEC_data.Uni_grade[40],
-        y=IEC_data.IEC_grade[40],
-        ax=0,
-        ay=-50,
-        showarrow=True,
-        text=IEC_data.Name[40],
-    )
-)
+# fig.add_annotation(
+#     dict(
+#         font=dict(color="black", size=textsize),
+#         x=IEC_data.Uni_grade[40],
+#         y=IEC_data.IEC_grade[40],
+#         ax=0,
+#         ay=-50,
+#         showarrow=True,
+#         text=IEC_data.Name[40],
+#     )
+# )
 
 if not os.path.isdir("Plots"):
     os.mkdir("Plots")
 
 # fig.show()
-fig.write_image("Plots/IEC_scores_largermarkersv1_labels.svg", scale=3)
-fig.write_image("Plots/IEC_scores_largermarkersv1_labels.png", scale=3)
+fig.write_image("Plots/IEC_scores_largermarkersv1.svg", scale=3)
+fig.write_image("Plots/IEC_scores_largermarkersv1.png", scale=3)
