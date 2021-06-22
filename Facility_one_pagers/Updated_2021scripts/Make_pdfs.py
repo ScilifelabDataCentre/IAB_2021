@@ -256,6 +256,7 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
     Story = []
     ### Below here will be Paragraph and Image elements added to the Story, they flow through frames automatically,
     ### however I have set a framebreak to correctly organise things in left/right column.
+    pd.options.display.max_colwidth = 600
     Story.append(
         Paragraph(
             "<font color='#A7C947' name=Lato-B><b>Basic information</b></font>",
@@ -852,12 +853,16 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
 
 
 # made a function that will generate all files together
+
+# for facility in complete_reporting_data.keys():
+# 	# Run PDF generation for each facility
+# 	generatePdf(facility, complete_reporting_data[facility], current_year)
+
 # What works will change every report.
-# recommend running the below and then individually checking each one and tweaking
-# then comment below out and run for individual facilities (further down)
+# Recommend running the above initially, checking the pdfs and then using below to tweak individual ones
 # Note: 2021 - WABI has no user fees. comment out warning code for this facility
 
-whonow = "National Genomics Infrastructure"
+whonow = "Translational Plasma Profiling"
 current_year = 2020
 test_facs = Facility_data[(Facility_data["Facility"] == whonow)]
 test_fund = Funding[(Funding["Facility"] == whonow)]
