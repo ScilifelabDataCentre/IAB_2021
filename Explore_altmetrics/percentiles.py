@@ -88,4 +88,4 @@ def groupedbar(data, name):
 
 # groupedbar(Aff_data_group_melt, "affiliates")
 # groupedbar(Fac_data_group_melt, "facilities")
-groupedbar(Fell_data_group_melt, "fellows")
+# groupedbar(Fell_data_group_melt, "fellows")
