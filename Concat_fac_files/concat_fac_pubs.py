@@ -5,7 +5,7 @@ import pandas as pd
 
 # Import years 2013-2020 (for 2021 years of interest)
 fac_2013 = pd.read_excel(
-    "/Users/liahu895/Documents/scilifelab/General information IAB 2021/IAB_pubdata/Raw_pub_data_to_KTH/fac_2013.xlsx",
+    "INSERT DATA FILE NAME.xlsx",
     sheet_name="Publications",
     header=0,
     engine="openpyxl",
@@ -13,7 +13,7 @@ fac_2013 = pd.read_excel(
 )
 
 fac_2014 = pd.read_excel(
-    "/Users/liahu895/Documents/scilifelab/General information IAB 2021/IAB_pubdata/Raw_pub_data_to_KTH/fac_2014.xlsx",
+    "INSERT DATA FILE NAME.xlsx",
     sheet_name="Publications",
     header=0,
     engine="openpyxl",
@@ -21,7 +21,7 @@ fac_2014 = pd.read_excel(
 )
 
 fac_2015 = pd.read_excel(
-    "/Users/liahu895/Documents/scilifelab/General information IAB 2021/IAB_pubdata/Raw_pub_data_to_KTH/fac_2015.xlsx",
+    "INSERT DATA FILE NAME.xlsx",
     sheet_name="Publications",
     header=0,
     engine="openpyxl",
@@ -29,7 +29,7 @@ fac_2015 = pd.read_excel(
 )
 
 fac_2016 = pd.read_excel(
-    "/Users/liahu895/Documents/scilifelab/General information IAB 2021/IAB_pubdata/Raw_pub_data_to_KTH/fac_2016.xlsx",
+    "INSERT DATA FILE NAME.xlsx",
     sheet_name="Publications",
     header=0,
     engine="openpyxl",
@@ -37,7 +37,7 @@ fac_2016 = pd.read_excel(
 )
 
 fac_2017 = pd.read_excel(
-    "/Users/liahu895/Documents/scilifelab/General information IAB 2021/IAB_pubdata/Raw_pub_data_to_KTH/fac_2017.xlsx",
+    "INSERT DATA FILE NAME.xlsx",
     sheet_name="Publications",
     header=0,
     engine="openpyxl",
@@ -45,7 +45,7 @@ fac_2017 = pd.read_excel(
 )
 
 fac_2018 = pd.read_excel(
-    "/Users/liahu895/Documents/scilifelab/General information IAB 2021/IAB_pubdata/Raw_pub_data_to_KTH/fac_2018.xlsx",
+    "INSERT DATA FILE NAME.xlsx",
     sheet_name="Publications",
     header=0,
     engine="openpyxl",
@@ -53,7 +53,7 @@ fac_2018 = pd.read_excel(
 )
 
 fac_2019 = pd.read_excel(
-    "/Users/liahu895/Documents/scilifelab/General information IAB 2021/IAB_pubdata/Raw_pub_data_to_KTH/fac_2019.xlsx",
+    "INSERT DATA FILE NAME.xlsx",
     sheet_name="Publications",
     header=0,
     engine="openpyxl",
@@ -61,7 +61,7 @@ fac_2019 = pd.read_excel(
 )
 
 fac_2020 = pd.read_excel(
-    "/Users/liahu895/Documents/scilifelab/General information IAB 2021/IAB_pubdata/Raw_pub_data_to_KTH/fac_2020.xlsx",
+    "INSERT DATA FILE NAME.xlsx",
     sheet_name="Publications",
     header=0,
     engine="openpyxl",
@@ -73,4 +73,4 @@ Fac_13to20 = pd.concat(
     [fac_2013, fac_2014, fac_2015, fac_2016, fac_2017, fac_2018, fac_2019, fac_2020]
 )
 # Write out to excel
-Fac_13to20.to_excel("Facilities_20210419.xlsx")
+# Fac_13to20.to_excel("Facilities_20210419.xlsx")
