@@ -5,7 +5,7 @@ import numpy as np
 ### FAC MAP
 # to their labels in the publication database
 fac_map_input = pd.read_excel(
-    "Data/Reporting Units 2020.xlsx",
+    "Data/Reporting Units 2020.xlsx",  ## file from Lars OO
     sheet_name="Reporting units",
     header=0,
     engine="openpyxl",
