@@ -3,12 +3,9 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # This script makes a simple 2 group venn diagram
-# it automatically calculates percentages and values and labels accordingly, just put in correct data
+# Information on n and % of publications is calculated automatically.
 # put data for 2 groups - facilities and affiliates
-# Have 2 versions for facilities extract (from pub database and from BIBMET - maximise matches by considering both as BIBMET coverage never 100%)
-facilities_pub = pd.read_excel(
-    "Data_venn/Facilities_20210419.xlsx", sheet_name="Sheet1", engine="openpyxl"
-)
+
 facilities_bib = pd.read_excel(
     "Data_venn/SciLifeLab-facilities-20210512.xlsx",
     sheet_name="publ_data",
@@ -20,27 +17,24 @@ affiliates_bib = pd.read_excel(
     engine="openpyxl",
 )
 
-# For IAB 2019 used 2017 and 2018. so, will use 2019 and 2020
+# IAB report uses last 2 years (e.g. IAB 2021: use 2019 and 2020)
 
-# facilities data requires some further processing when matching on UT.
-# not all facilities publications are in BIBMET
-# union between groups will be right as affiliates ONLY from BIBMET
-# however, there are more publications in the facilities lists in the database
-# to ensure everything is right, quicker to add some manual values
+# IMPORTANT! There are two sources of data for facilities publications; our database and the data extracts.
+# Coverage is not 100% in searches but numbers must align for facilities. This requires some manual work.
 
+# Load the data from extracts
 facs_bib = facilities_bib[
     (facilities_bib["Publication_year"] > 2018)
     & (facilities_bib["Publication_year"] < 2021)
 ]
-# facs_pubdb = facilities_pub[
-#     (facilities_pub["Year"] > 2018) & (facilities_pub["Year"] < 2021)
-# ]
 
-# affiliates data requires no further processing only filter for years
 affs_bib = affiliates_bib[
     (affiliates_bib["Publication_year"] > 2018)
     & (affiliates_bib["Publication_year"] < 2021)
 ]
+
+# uncomment the below section of script - examine the values when matching based on UT.
+# The values will be correct for affiliates and the intersect, but not for facilities. You need to examine the total number for infrastructure and add the missing amount
 
 # # fac_set_UT = set(facs_bib["UT"])
 # # aff_set_UT = set(affs_bib["UT"])
@@ -65,11 +59,8 @@ affs_bib = affiliates_bib[
 # # v.get_patch_by_id("11").set_color("#a48fa9")
 # # plt.show()
 
-# now read values from the plot shown
-# IAB 2021 - 463 in union, 1166 in aff
-# Previous calculations (see JIF plots and raw facilities extract) suggest there are in total 1218 facility publications
-# However, original venn calculation above suggests 1121 (463 + 658), so should actually see 97 more publications for just facilities (755)
-# quickest for me to add these manually
+# now you can use the below to produce a graph with the correct values manually inserted.
+# the below values are true for IAB 2021 report.
 
 inoverlap = 463
 facilityonly = 755
@@ -84,9 +75,9 @@ percaff = round((affiliateonly / real_total) * 100)
 
 v_use = venn2(
     subsets=(percfac, percaff, percover),
-    # next line would set labels outside the circles
+    # set labels outside of circles
     set_labels=(
-        "Unit Users",
+        "Infrastructure Users",
         "Affliated researchers",
     ),
     set_colors=("#A7C947", "#4C979F"),
@@ -98,9 +89,12 @@ v_use.get_label_by_id("10").set_text("{}\n({}%)".format(facilityonly, percfac))
 v_use.get_label_by_id("11").set_text("{}\n({}%)".format(inoverlap, percover))
 # set outer labels
 for text in v_use.set_labels:
-    text.set_fontsize(12)
+    text.set_fontsize(16)
+for text in v_use.subset_labels:
+    text.set_fontsize(20)
 # # below recolours overlapping sections to be consistent with scilifelab visual ID
 v_use.get_patch_by_id("11").set_color("#a48fa9")
 # plt.show()
-# #Uncomment the above to show the figure, the below saves the figure, but a blank image will be saved if plt.show() is done first
-plt.savefig("Venn_affiliates_and_fellows.svg", dpi=300)
+# Uncomment the above to show the figure - useful for tests, the below saves the figure, but a blank image will be saved if plt.show() is not commented out
+plt.savefig("Venn_affiliates_and_fellows_v2.svg", dpi=300)
+plt.savefig("Venn_affiliates_and_fellows_v2.png", dpi=300)
