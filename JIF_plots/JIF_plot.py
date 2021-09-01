@@ -79,10 +79,10 @@ def JIF_graph_func(input, name):
         barmode="stack",
         plot_bgcolor="white",
         autosize=False,
-        font=dict(size=26),
+        font=dict(size=55),  # 58 for fellows
         margin=dict(r=250, t=0, b=0, l=0),
-        width=1800,
-        height=1000,
+        width=2000,
+        height=1200,
         showlegend=True,
     )
     # List years to use in x-axis
@@ -152,8 +152,8 @@ def JIF_graph_func(input, name):
         yaxis_tick = 20
     if highest_y_value > 150:
         yaxis_tick = 40
-    if highest_y_value > 200:
-        yaxis_tick = 50
+    if highest_y_value > 500:
+        yaxis_tick = 100
     if highest_y_value > 1000:
         yaxis_tick = 100
 
@@ -166,14 +166,15 @@ def JIF_graph_func(input, name):
         dtick=yaxis_tick,
         range=[0, int(highest_y_value * 1.15)],
     )
-    if not os.path.isdir("Plots/"):
-        os.mkdir("Plots/")
+    if not os.path.isdir("Plots/largerfonts"):
+        os.mkdir("Plots/largerfonts")
     # fig.show()
-    fig.write_image("Plots/{}_JIF.png".format(name))
+    fig.write_image("Plots/largerfonts/{}_JIF.png".format(name))
+    fig.write_image("Plots/largerfonts/{}_JIF.svg".format(name))
 
 
 # make plots by applying function
 
-# JIF_graph_func(JIF_sub_group_fac, "facilities")
+JIF_graph_func(JIF_sub_group_fac, "facilities")
 # JIF_graph_func(JIF_sub_group_fell, "fellows")
-# JIF_graph_func(JIF_sub_group_aff, "affiliates")
+JIF_graph_func(JIF_sub_group_aff, "affiliates")
