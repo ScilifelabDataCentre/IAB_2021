@@ -2,14 +2,14 @@ import csv
 import pandas as pd
 
 VOS_Swe = pd.read_csv(
-    "Data/aff_network_nat_map.txt",
+    "Data/UPDATE_nat_map_201518.txt",
     sep="\t",
     #    engine="c",
 )
 
 VOS_Swe["label"] = VOS_Swe["label"].str.title()
 # title format for labels helps format and thesaurus eradicates some errors (stage before this) in VOS viewer
-print(VOS_Swe.head(50))  # check labels and what edits needed
+# print(VOS_Swe.head(50))  # check labels and what edits needed
 # Need manual text edits for some labels
 
 
@@ -85,6 +85,10 @@ VOS_Swe = VOS_Swe.replace(
     "University Of Gothenburg",
     "University of Gothenburg",
 )
+VOS_Swe = VOS_Swe.replace(
+    "Swedish Museum Of Natural History",
+    "Swedish Museum of Natural History",
+)
 VOS_Swe["score<Avg. citations>"] = VOS_Swe["score<Avg. citations>"] / 100
 # write out to put back to VOS
-VOS_Swe.to_csv("Data/aff_network_nat_map_edited.txt", sep="\t", index=False)
+VOS_Swe.to_csv("Data/UPDATE_nat_map_201518_edited.txt", sep="\t", index=False)

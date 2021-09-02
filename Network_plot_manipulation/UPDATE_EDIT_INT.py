@@ -2,7 +2,7 @@ import csv
 import pandas as pd
 
 VOS_noSLL = pd.read_csv(
-    "Data/aff_network_int_map.txt",
+    "Data/UPDATE_int_map_201518.txt",
     sep="\t",
     #    engine="c",
 )
@@ -161,4 +161,4 @@ VOS_noSLL = VOS_noSLL.replace(
 VOS_noSLL["score<Avg. citations>"] = VOS_noSLL["score<Avg. citations>"] / 100
 
 # write out to put back to VOS
-VOS_noSLL.to_csv("Data/aff_network_int_map_edited.txt", sep="\t", index=False)
+VOS_noSLL.to_csv("Data/UPDATE_int_map_201518_edited.txt", sep="\t", index=False)
