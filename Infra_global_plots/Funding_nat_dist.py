@@ -33,7 +33,7 @@ uni_map = {
     "Chalmers University of Technology": "Chalmers",
     "Linköping University": "LiU",
     "Swedish University of Agricultural Sciences": "SLU",
-    "Örebro University": "ÖU",
+    "Örebro University": "ORU",
 }
 
 df_basic = df.replace(uni_map, regex=True)
@@ -74,7 +74,7 @@ fig.update_traces(
 )
 fig.update_layout(
     margin=dict(l=100, r=100, b=100, t=100),
-    font=dict(size=34),
+    font=dict(size=42),
     showlegend=False,
     width=1500,
     height=1500,

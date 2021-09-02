@@ -75,7 +75,7 @@ fig.update_traces(
 
 fig.update_layout(
     plot_bgcolor="white",
-    font=dict(size=32),
+    font=dict(size=36),
     margin=dict(r=0, t=0, b=0, l=0),
     width=2500,
     height=1500,

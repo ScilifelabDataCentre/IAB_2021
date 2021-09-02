@@ -42,7 +42,12 @@ Acaduser_data["Academic User affiliation"] = Acaduser_data[
     "Swedish University of Agricultural Sciences",
     "Swedish University of <br>Agricultural Sciences",
 )
-
+Acaduser_data["Academic User affiliation"] = Acaduser_data[
+    "Academic User affiliation"
+].replace(
+    "University of Gothenburg",
+    "University of<br>Gothenburg",
+)
 
 fig = go.Figure(
     go.Pie(
@@ -60,8 +65,8 @@ fig.update_traces(
     texttemplate="%{label} <br>(%{value}%)",
 )
 fig.update_layout(
-    margin=dict(l=200, r=200, b=200, t=200),
-    font=dict(size=18),
+    margin=dict(l=0, r=0, b=0, t=0),
+    font=dict(size=23),
     showlegend=False,
     width=1000,
     height=1000,
@@ -72,3 +77,4 @@ if not os.path.isdir("Plots"):
 # fig.show()
 
 fig.write_image("Plots/Acaduser_data_pie.svg", scale=3)
+fig.write_image("Plots/Acaduser_data_pie.png", scale=3)

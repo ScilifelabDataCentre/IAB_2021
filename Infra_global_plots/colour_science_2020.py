@@ -154,6 +154,17 @@ FACILITY_USER_AFFILIATION_COLOUR_OFFICIAL_UNABB = {
     "Other Swedish University": "#FF7C5B",  # red orange
 }
 
+PLATFORM_FUNDING_COLOURS = {
+    "SciLifeLab Base": "#A7C947",
+    "SciLifeLab Instrument": "#E5E5E5",
+    "University": "#045C64",
+    "VR": "#491F53",
+    "KAW": "#4C979F",
+    "Vinnova": "#D3E4A3",
+    "Healthcare": "#D2C7D4",
+    "Other": "#3F3F3F",
+}
+
 # abbreviated to match names given in pies (IAB 2021)
 FACILITY_USER_AFFILIATION_COLOUR_OFFICIAL_ABB = {
     "Chalmers": "#006C5C",  # https://www.chalmers.se/SiteCollectionDocuments/om%20chalmers%20dokument/Grafisk%20profil/Chalmers_visuella_identitet_1.0_2018.pdf
@@ -180,13 +191,13 @@ FACILITY_USER_AFFILIATION_COLOUR_OFFICIAL_ABB = {
 
 
 def hex_to_RGB(hex):
-    """ "#FFFFFF" -> [255,255,255] """
+    """ "#FFFFFF" -> [255,255,255]"""
     # Pass 16 to the integer function for change of base
     return [int(hex[i : i + 2], 16) for i in range(1, 6, 2)]
 
 
 def RGB_to_hex(RGB):
-    """ [255,255,255] -> "#FFFFFF" """
+    """[255,255,255] -> "#FFFFFF" """
     # Components need to be integers for hex to make sense
     RGB = [int(x) for x in RGB]
     return "#" + "".join(
