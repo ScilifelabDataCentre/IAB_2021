@@ -23,7 +23,7 @@ Fellows_data = pd.read_excel(
 )
 
 Fellows_data_sub = Fellows_data[
-    (Fellows_data["Publication_year"] > 2013)
+    (Fellows_data["Publication_year"] > 2014)
     & (Fellows_data["Publication_year"] < 2019)
 ]
 
@@ -68,7 +68,7 @@ Affiliates_data = pd.read_excel(
 )
 
 Affiliates_data_sub = Affiliates_data[
-    (Affiliates_data["Publication_year"] > 2012)
+    (Affiliates_data["Publication_year"] > 2014)
     & (Affiliates_data["Publication_year"] < 2019)
 ]
 
@@ -113,7 +113,7 @@ Facilities_data = pd.read_excel(
 
 
 Facilities_data_sub = Facilities_data[
-    (Facilities_data["Publication_year"] > 2012)
+    (Facilities_data["Publication_year"] > 2014)
     & (Facilities_data["Publication_year"] < 2019)
 ]
 
@@ -183,8 +183,8 @@ def PPtop10_graph_func_facoraff(input, pub_group):
             "<b>" + Years[1] + "</b>",
             "<b>" + Years[2] + "</b>",
             "<b>" + Years[3] + "</b>",
-            "<b>" + Years[4] + "</b>",
-            "<b>" + Years[5] + "</b>",
+            # "<b>" + Years[4] + "</b>",
+            # "<b>" + Years[5] + "</b>",
             # "<b>" + Years[6] + "</b>",
             # "<b>" + Years[7] + "</b>",
             #           "<b>" + Years[8] + "</b>",
@@ -194,8 +194,8 @@ def PPtop10_graph_func_facoraff(input, pub_group):
             Years[1],
             Years[2],
             Years[3],
-            Years[4],
-            Years[5],
+            # Years[4],
+            # Years[5],
             # Years[6],
             # Years[7],
             #            Years[8],
@@ -218,14 +218,18 @@ def PPtop10_graph_func_facoraff(input, pub_group):
         dtick=yaxis_tick,
         range=[0, float(highest_y_value * 1.15)],
     )
-    if not os.path.isdir("Plots/largerfonts/"):
-        os.mkdir("Plots/largerfonts/")
+    if not os.path.isdir("Plots/largerfonts/update1518/"):
+        os.mkdir("Plots/largerfonts/update1518/")
     # fig.show()
     fig.write_image(
-        "Plots/largerfonts/{}_PPtop10_overyears_arttypes.svg".format(pub_group)
+        "Plots/largerfonts/update1518/{}_PPtop10_overyears_arttypes.svg".format(
+            pub_group
+        )
     )
     fig.write_image(
-        "Plots/largerfonts/{}_PPtop10_overyears_arttypes.png".format(pub_group)
+        "Plots/largerfonts/update1518/{}_PPtop10_overyears_arttypes.png".format(
+            pub_group
+        )
     )
 
 
@@ -263,7 +267,7 @@ def PPtop10_graph_func_fell(input, pub_group):
             "<b>" + Years[1] + "</b>",
             "<b>" + Years[2] + "</b>",
             "<b>" + Years[3] + "</b>",
-            "<b>" + Years[4] + "</b>",
+            # "<b>" + Years[4] + "</b>",
             # "<b>" + Years[5] + "</b>",
             # "<b>" + Years[6] + "</b>",
             # "<b>" + Years[7] + "</b>",
@@ -274,7 +278,7 @@ def PPtop10_graph_func_fell(input, pub_group):
             Years[1],
             Years[2],
             Years[3],
-            Years[4],
+            # Years[4],
             # Years[5],
             # Years[6],
             # Years[7],
@@ -298,14 +302,18 @@ def PPtop10_graph_func_fell(input, pub_group):
         dtick=yaxis_tick,
         range=[0, float(highest_y_value * 1.15)],
     )
-    if not os.path.isdir("Plots/largerfonts/"):
-        os.mkdir("Plots/largerfonts/")
+    if not os.path.isdir("Plots/largerfonts/update1518/"):
+        os.mkdir("Plots/largerfonts/update1518/")
     # fig.show()
     fig.write_image(
-        "Plots/largerfonts/{}_PPtop10_overyears_arttypes.svg".format(pub_group)
+        "Plots/largerfonts/update1518/{}_PPtop10_overyears_arttypes.svg".format(
+            pub_group
+        )
     )
     fig.write_image(
-        "Plots/largerfonts/{}_PPtop10_overyears_arttypes.png".format(pub_group)
+        "Plots/largerfonts/update1518/{}_PPtop10_overyears_arttypes.png".format(
+            pub_group
+        )
     )
 
 
@@ -343,8 +351,8 @@ def PPtop1_graph_func_facoraff(input, pub_group):
             "<b>" + Years[1] + "</b>",
             "<b>" + Years[2] + "</b>",
             "<b>" + Years[3] + "</b>",
-            "<b>" + Years[4] + "</b>",
-            "<b>" + Years[5] + "</b>",
+            # "<b>" + Years[4] + "</b>",
+            # "<b>" + Years[5] + "</b>",
             # "<b>" + Years[6] + "</b>",
             # "<b>" + Years[7] + "</b>",
             #           "<b>" + Years[8] + "</b>",
@@ -354,8 +362,8 @@ def PPtop1_graph_func_facoraff(input, pub_group):
             Years[1],
             Years[2],
             Years[3],
-            Years[4],
-            Years[5],
+            # Years[4],
+            # Years[5],
             # Years[6],
             # Years[7],
             #            Years[8],
@@ -378,14 +386,18 @@ def PPtop1_graph_func_facoraff(input, pub_group):
         dtick=yaxis_tick,
         range=[0, float(highest_y_value * 1.15)],
     )
-    if not os.path.isdir("Plots/largerfonts/"):
-        os.mkdir("Plots/largerfonts/")
+    if not os.path.isdir("Plots/largerfonts/update1518/"):
+        os.mkdir("Plots/largerfonts/update1518/")
     # fig.show()
     fig.write_image(
-        "Plots/largerfonts/{}_PPtop1_overyears_arttypes.svg".format(pub_group)
+        "Plots/largerfonts/update1518/{}_PPtop1_overyears_arttypes.svg".format(
+            pub_group
+        )
     )
     fig.write_image(
-        "Plots/largerfonts/{}_PPtop1_overyears_arttypes.png".format(pub_group)
+        "Plots/largerfonts/update1518/{}_PPtop1_overyears_arttypes.png".format(
+            pub_group
+        )
     )
 
 
@@ -423,7 +435,7 @@ def PPtop1_graph_func_fell(input, pub_group):
             "<b>" + Years[1] + "</b>",
             "<b>" + Years[2] + "</b>",
             "<b>" + Years[3] + "</b>",
-            "<b>" + Years[4] + "</b>",
+            # "<b>" + Years[4] + "</b>",
             # "<b>" + Years[5] + "</b>",
             # "<b>" + Years[6] + "</b>",
             # "<b>" + Years[7] + "</b>",
@@ -434,7 +446,7 @@ def PPtop1_graph_func_fell(input, pub_group):
             Years[1],
             Years[2],
             Years[3],
-            Years[4],
+            # Years[4],
             # Years[5],
             # Years[6],
             # Years[7],
@@ -458,14 +470,18 @@ def PPtop1_graph_func_fell(input, pub_group):
         dtick=yaxis_tick,
         range=[0, float(highest_y_value * 1.15)],
     )
-    if not os.path.isdir("Plots/largerfonts/"):
-        os.mkdir("Plots/largerfonts/")
+    if not os.path.isdir("Plots/largerfonts/update1518/"):
+        os.mkdir("Plots/largerfonts/update1518/")
     # fig.show()
     fig.write_image(
-        "Plots/largerfonts/{}_PPtop1_overyears_arttypes.svg".format(pub_group)
+        "Plots/largerfonts/update1518/{}_PPtop1_overyears_arttypes.svg".format(
+            pub_group
+        )
     )
     fig.write_image(
-        "Plots/largerfonts/{}_PPtop1_overyears_arttypes.png".format(pub_group)
+        "Plots/largerfonts/update1518/{}_PPtop1_overyears_arttypes.png".format(
+            pub_group
+        )
     )
 
 
