@@ -36,77 +36,102 @@ facilities = pd.read_excel(
 # Focus on latest (2018, as of IAB 2021) impact values
 
 benchmark_compare = benchmark[
+    ["Publication_year", "Subject_category", "Prop_Top10_scxwo_full", "cf_scxwo_full"]
+]
+benchmark_compare = benchmark_compare[
+    (benchmark_compare["Publication_year"] == 2015)
+    | (benchmark_compare["Publication_year"] == 2016)
+    | (benchmark_compare["Publication_year"] == 2017)
+    | (benchmark_compare["Publication_year"] == 2018)
+]
+
+bench_pp_fields = (
+    benchmark_compare.groupby("Subject_category")["Prop_Top10_scxwo_full"]
+    .mean()
+    .reset_index()
+)
+
+bench_mncs_fields = (
+    benchmark_compare.groupby("Subject_category")["cf_scxwo_full"].mean().reset_index()
+)
+
+
+# print(bench_pp_fields)
+# print(bench_mncs_fields)
+
+aff_sub = affiliates[
     [
         "Publication_year",
         "Subject_category",
-        "cf_scxwo_full",
+        "Cf_scxwo",
+        "Doc_type_code_rev",
     ]
 ]
-benchmark_compare = benchmark_compare[(benchmark_compare["Publication_year"] == 2018)]
-benchmark_compare = benchmark_compare.rename(
-    columns={
-        "cf_scxwo_full": "Full_bench",
-    }
-)
-# print(benchmark_compare)
-
-aff_sub = affiliates[
-    ["Publication_year", "Subject_category", "Cf_scxwo", "Doc_type_code_rev"]
+aff_201518 = aff_sub[
+    (aff_sub["Publication_year"] == 2015)
+    | (aff_sub["Publication_year"] == 2016)
+    | (aff_sub["Publication_year"] == 2017)
+    | (aff_sub["Publication_year"] == 2018)
 ]
-aff_2018 = aff_sub[(aff_sub["Publication_year"] == 2018)]
-aff_2018 = aff_2018[
-    (aff_2018["Subject_category"] == "BIOCHEMICAL RESEARCH METHODS")
-    | (aff_2018["Subject_category"] == "BIOCHEMISTRY & MOLECULAR BIOLOGY")
-    | (aff_2018["Subject_category"] == "BIOTECHNOLOGY & APPLIED MICROBIOLOGY")
-    | (aff_2018["Subject_category"] == "ONCOLOGY")
-    | (aff_2018["Subject_category"] == "CELL BIOLOGY")
-    | (aff_2018["Subject_category"] == "GENETICS & HEREDITY")
+aff_201518 = aff_201518[
+    (aff_201518["Subject_category"] == "BIOCHEMICAL RESEARCH METHODS")
+    | (aff_201518["Subject_category"] == "BIOCHEMISTRY & MOLECULAR BIOLOGY")
+    | (aff_201518["Subject_category"] == "BIOTECHNOLOGY & APPLIED MICROBIOLOGY")
+    | (aff_201518["Subject_category"] == "ONCOLOGY")
+    | (aff_201518["Subject_category"] == "CELL BIOLOGY")
+    | (aff_201518["Subject_category"] == "GENETICS & HEREDITY")
 ]
-
-aff_2018 = aff_2018[
-    (aff_2018["Doc_type_code_rev"] == "RV")
-    | (aff_2018["Doc_type_code_rev"] == "AR")
-    | (aff_2018["Doc_type_code_rev"] == "PP")
+aff_201518 = aff_201518[
+    (aff_201518["Doc_type_code_rev"] == "RV")
+    | (aff_201518["Doc_type_code_rev"] == "AR")
+    | (aff_201518["Doc_type_code_rev"] == "PP")
 ]
 
-aff_2018["Cf_scxwo"] = aff_2018["Cf_scxwo"].astype(float)
+aff_201518["Cf_scxwo"] = aff_201518["Cf_scxwo"].astype(float)
 
-aff_cf_fields = aff_2018.groupby("Subject_category")["Cf_scxwo"].mean().reset_index()
+aff_cf_fields = aff_201518.groupby("Subject_category")["Cf_scxwo"].mean().reset_index()
 aff_cf_fields = aff_cf_fields.rename(
     columns={
         "Cf_scxwo": "aff_Cf",
     }
 )
 
+
 fac_sub = facilities[
     ["Publication_year", "Subject_category", "Cf_scxwo", "Doc_type_code_rev"]
 ]
-fac_2018 = fac_sub[(fac_sub["Publication_year"] == 2018)]
-fac_2018 = fac_2018[
-    (fac_2018["Subject_category"] == "BIOCHEMICAL RESEARCH METHODS")
-    | (fac_2018["Subject_category"] == "BIOCHEMISTRY & MOLECULAR BIOLOGY")
-    | (fac_2018["Subject_category"] == "BIOTECHNOLOGY & APPLIED MICROBIOLOGY")
-    | (fac_2018["Subject_category"] == "ONCOLOGY")
-    | (fac_2018["Subject_category"] == "CELL BIOLOGY")
-    | (fac_2018["Subject_category"] == "GENETICS & HEREDITY")
+fac_201518 = fac_sub[
+    (fac_sub["Publication_year"] == 2015)
+    | (fac_sub["Publication_year"] == 2016)
+    | (fac_sub["Publication_year"] == 2017)
+    | (fac_sub["Publication_year"] == 2018)
 ]
-fac_2018 = fac_2018[
-    (fac_2018["Doc_type_code_rev"] == "RV")
-    | (fac_2018["Doc_type_code_rev"] == "AR")
-    | (fac_2018["Doc_type_code_rev"] == "PP")
+fac_201518 = fac_201518[
+    (fac_201518["Subject_category"] == "BIOCHEMICAL RESEARCH METHODS")
+    | (fac_201518["Subject_category"] == "BIOCHEMISTRY & MOLECULAR BIOLOGY")
+    | (fac_201518["Subject_category"] == "BIOTECHNOLOGY & APPLIED MICROBIOLOGY")
+    | (fac_201518["Subject_category"] == "ONCOLOGY")
+    | (fac_201518["Subject_category"] == "CELL BIOLOGY")
+    | (fac_201518["Subject_category"] == "GENETICS & HEREDITY")
+]
+fac_201518 = fac_201518[
+    (fac_201518["Doc_type_code_rev"] == "RV")
+    | (fac_201518["Doc_type_code_rev"] == "AR")
+    | (fac_201518["Doc_type_code_rev"] == "PP")
 ]
 
-fac_2018["Cf_scxwo"] = fac_2018["Cf_scxwo"].astype(float)
+fac_201518["Cf_scxwo"] = fac_201518["Cf_scxwo"].astype(float)
 
-fac_cf_fields = fac_2018.groupby("Subject_category")["Cf_scxwo"].mean().reset_index()
+fac_cf_fields = fac_201518.groupby("Subject_category")["Cf_scxwo"].mean().reset_index()
 fac_cf_fields = fac_cf_fields.rename(
     columns={
         "Cf_scxwo": "fac_Cf",
     }
 )
 
+
 comb_Bandaff = pd.merge(
-    benchmark_compare,
+    bench_mncs_fields,
     aff_cf_fields,
     how="left",
     on=["Subject_category"],
@@ -123,7 +148,7 @@ fig = go.Figure(
         go.Bar(
             name="Sweden",
             x=comb_all.Subject_category,
-            y=comb_all.Full_bench,
+            y=comb_all.cf_scxwo_full,
             marker=dict(color="#4C979F", line=dict(color="#000000", width=1)),
         ),
         go.Bar(
@@ -164,8 +189,8 @@ fig.update_yaxes(
     tickvals=["0.0", "1.0", "2.0", "3.0", "4.0"],
     range=[0, 4],
 )
-# fig.show()
+fig.show()
 if not os.path.isdir("Plots/largerfonts/"):
     os.mkdir("Plots/largerfonts/")
-fig.write_image("Plots/largerfonts/benchmark_MNCS_arttypes.svg")
-fig.write_image("Plots/largerfonts/benchmark_MNCS_arttypes.png")
+fig.write_image("Plots/largerfonts/benchmark_1518_mncs.svg")
+fig.write_image("Plots/largerfonts/benchmark_1518_mncs.png")

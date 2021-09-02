@@ -17,7 +17,7 @@ trend_data_fell = pd.read_excel(
 )
 
 trend_data_fell_sub = trend_data_fell[
-    (trend_data_fell["Publication_year"] > 2012)
+    (trend_data_fell["Publication_year"] > 2014)
     & (trend_data_fell["Publication_year"] < 2019)
 ]
 trend_data_fell_sub = trend_data_fell_sub[
@@ -50,11 +50,18 @@ trend_group["tot_papers"] = total_papers
 #     on="Subject_category",
 # )
 
-trend_group["Prop_papers"] = trend_group["field_count"] / trend_group["tot_papers"]
-trend_group.sort_values(by="Prop_papers", ascending=False, inplace=True)
-
-trend_group = trend_group.head(20)
-trend_group = trend_group.round(2)
+trend_group["No_papers"] = trend_group["field_count"]
+trend_group.sort_values(by="No_papers", ascending=False, inplace=True)
+trend_group["pptop10"] = trend_group["pptop10"] * 100
+trend_group = trend_group[trend_group["No_papers"] >= 20]
+trend_group.drop(["field_count", "tot_papers"], axis=1, inplace=True)
+trend_group["Subject_category"] = trend_group["Subject_category"].replace(
+    "CHEMISTRY, MULTIDISCIPLINARY",
+    "CHEMISTRY (MULTIDISCIPLINARY)",
+)
+# trend_group = trend_group.head(20)
+# trend_group = trend_group.round(2)
+print(trend_group)
 fig3 = go.Figure(
     data=[
         go.Table(
@@ -63,7 +70,7 @@ fig3 = go.Figure(
                 values=[
                     "<b>Subject Category</b>",
                     "<b>PP(top10)</b>",
-                    "<b>Proportion of Publications</b>",
+                    "<b>Number of Publications</b>",
                 ],
                 align=["left", "center", "center"],
                 fill_color=SCILIFE_COLOURS[0],
@@ -74,9 +81,10 @@ fig3 = go.Figure(
                 values=(
                     trend_group["Subject_category"],
                     trend_group["pptop10"],
-                    trend_group["Prop_papers"],
+                    trend_group["No_papers"],
                 ),
                 align=["left", "center", "center"],
+                format=[[None], [".0f"], [None]],
                 fill_color=[[SCILIFE_COLOURS[1], "white"] * 10],
                 font=dict(color="black", size=12),
                 height=30,
@@ -85,7 +93,8 @@ fig3 = go.Figure(
         )
     ]
 )
+fig3.update_layout(autosize=False, margin={"l": 0, "r": 0, "t": 0, "b": 0}, height=450)
 # fig3.show()
-fig3.update_layout(autosize=False, margin={"l": 0, "r": 0, "t": 0, "b": 0}, height=700)
-fig3.write_image("Plots/summary_table_fells_arttypes.png")
-fig3.write_image("Plots/summary_table_fells_arttypes.svg")
+fig3.write_image("Plots/UPDATE1518/summary_table_fells_arttypes.png")
+fig3.write_image("Plots/UPDATE1518/summary_table_fells_arttypes.svg")
+trend_group.to_excel("Plots/UPDATE1518/summary_table_fells_arttypes_data.xlsx")

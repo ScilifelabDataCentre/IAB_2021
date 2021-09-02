@@ -148,7 +148,7 @@ fig = go.Figure(
             marker=dict(color="#A7C947", line=dict(color="#000000", width=1)),
         ),
         go.Bar(
-            name="Unit Users",
+            name="Infrastructure Users",
             x=comb_all.Subject_category,
             y=comb_all.fac_PP10,
             marker=dict(color="#491F53", line=dict(color="#000000", width=1)),
@@ -160,7 +160,7 @@ fig = go.Figure(
 fig.update_layout(
     barmode="group",
     plot_bgcolor="white",
-    font=dict(size=22),
+    font=dict(size=39),
     margin=dict(r=150, l=10),
     autosize=False,
     width=1800,
@@ -180,7 +180,7 @@ fig.update_yaxes(
     range=[0, 41],
 )
 # fig.show()
-if not os.path.isdir("Plots/"):
-    os.mkdir("Plots/")
-fig.write_image("Plots/benchmark_PPtop10_arttypes.svg")
-fig.write_image("Plots/benchmark_PPtop10_arttypes.png")
+if not os.path.isdir("Plots/largerfonts/"):
+    os.mkdir("Plots/largerfonts/")
+fig.write_image("Plots/largerfonts/benchmark_PPtop10_arttypes.svg")
+fig.write_image("Plots/largerfonts/benchmark_PPtop10_arttypes.png")

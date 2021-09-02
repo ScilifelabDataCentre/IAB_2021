@@ -24,7 +24,7 @@ benchmark = pd.read_excel(
 )
 
 trend_data_fac_sub = trend_data_fac[
-    (trend_data_fac["Publication_year"] > 2012)
+    (trend_data_fac["Publication_year"] > 2014)
     & (trend_data_fac["Publication_year"] < 2019)
 ]
 trend_data_fac_sub = trend_data_fac_sub[
@@ -121,8 +121,8 @@ mergebench = mergebench[
 ]
 # print(mergebench)
 mergebench["relative_bench"] = mergebench["relative_bench"].astype(str)
-mergebench = mergebench.replace("True", "PP(top10) exceeds Swedish Benchmark")
-mergebench = mergebench.replace("False", "PP(top10) does not exceed Swedish Benchmark")
+mergebench = mergebench.replace("True", "PP(top10) exceeds benchmark")
+mergebench = mergebench.replace("False", "PP(top10) does not<br>exceed benchmark")
 
 
 # # Each field will be a different line. Need to subset by field
@@ -234,9 +234,9 @@ fig.add_trace(
 fig.update_layout(
     plot_bgcolor="white",
     autosize=False,
-    font=dict(size=18),
-    margin=dict(r=350, t=0, b=0, l=0),
-    width=1800,
+    font=dict(size=40),
+    margin=dict(r=450, t=0, b=0, l=0),
+    width=2300,
     height=1000,
     showlegend=True,
 )
@@ -246,7 +246,7 @@ fig.update_layout(
         # y=0.99,
         xanchor="right",
         title=" ",
-        x=1.45,
+        x=1.55,
     )
 )
 Years = mergebench["Publication_year"].unique().astype(str)
@@ -261,8 +261,8 @@ fig.update_xaxes(
         "<b>" + Years[1] + "</b>",
         "<b>" + Years[2] + "</b>",
         "<b>" + Years[3] + "</b>",
-        "<b>" + Years[4] + "</b>",
-        "<b>" + Years[5] + "</b>",
+        # "<b>" + Years[4] + "</b>",
+        # "<b>" + Years[5] + "</b>",
         # "<b>" + Years[6] + "</b>",
         # "<b>" + Years[7] + "</b>",
         #           "<b>" + Years[8] + "</b>",
@@ -272,8 +272,8 @@ fig.update_xaxes(
         Years[1],
         Years[2],
         Years[3],
-        Years[4],
-        Years[5],
+        # Years[4],
+        # Years[5],
         # Years[6],
         # Years[7],
         #            Years[8],
@@ -296,8 +296,8 @@ fig.update_yaxes(
     dtick=yaxis_tick,
     range=[0, 0.3],
 )
-if not os.path.isdir("Plots/"):
-    os.mkdir("Plots/")
+if not os.path.isdir("Plots/largerfonts/"):
+    os.mkdir("Plots/largerfonts/")
 # fig.show()
-fig.write_image("Plots/facilities_trends_arttypes.svg")
-fig.write_image("Plots/facilities_trends_arttypes.png")
+fig.write_image("Plots/largerfonts/facilities_trends_1518.svg")
+fig.write_image("Plots/largerfonts/facilities_trends_1518.png")

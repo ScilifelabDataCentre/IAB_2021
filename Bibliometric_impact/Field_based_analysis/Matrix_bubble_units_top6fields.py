@@ -163,10 +163,10 @@ fig = go.Figure(
 
 fig.update_layout(
     plot_bgcolor="white",
-    font=dict(size=18),
+    font=dict(size=39),
     margin=dict(r=0, t=0, b=0, l=0),
     width=2500,
-    height=800,
+    height=1500,
     showlegend=False,
 )
 
@@ -204,7 +204,8 @@ fig.update_yaxes(
 )
 
 # fig.show()
-if not os.path.isdir("Plots"):
-    os.mkdir("Plots")
-fig.write_image("Plots/Bubbleplot_facstop6fields.png")
-fig.write_image("Plots/Bubbleplot_facstop6fields.svg")
+if not os.path.isdir("Plots/largerfonts/"):
+    os.mkdir("Plots/largerfonts/")
+# fig.show()
+fig.write_image("Plots/largerfonts/Bubbleplot_facstop6fields.png")
+fig.write_image("Plots/largerfonts/Bubbleplot_facstop6fields.svg")
