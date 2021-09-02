@@ -144,7 +144,7 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
         doc.width / 3,  # - 3.5 * mm,
         (doc.height / 2) - 18 * mm,
         id="col1",
-        #        showBoundary=1,
+        #        showBoundary=1, #this can be used to show where the frame sits - useful for setting up layout
         leftPadding=0 * mm,
         topPadding=5 * mm,
         rightPadding=0 * mm,
@@ -854,17 +854,17 @@ def generatePdf(facility_name, Facility_data, Funding, current_year):
 
 # made a function that will generate all files together
 
-# for facility in complete_reporting_data.keys():
-# 	# Run PDF generation for each facility
-# 	generatePdf(facility, complete_reporting_data[facility], current_year)
+for facility in complete_reporting_data.keys():
+    # Run PDF generation for each facility
+    generatePdf(facility, complete_reporting_data[facility], current_year)
 
 # What works will change every report.
 # Recommend running the above initially, checking the pdfs and then using below to tweak individual ones
 # Note: 2021 - WABI has no user fees. comment out warning code for this facility
 
-whonow = "Translational Plasma Profiling"
-current_year = 2020
-test_facs = Facility_data[(Facility_data["Facility"] == whonow)]
-test_fund = Funding[(Funding["Facility"] == whonow)]
-facility_name = whonow
-generatePdf(facility_name, test_facs, test_fund, current_year)
+# whonow = "Clinical Genomics Umeå"
+# current_year = 2020
+# test_facs = Facility_data[(Facility_data["Facility"] == whonow)]
+# test_fund = Funding[(Funding["Facility"] == whonow)]
+# facility_name = whonow
+# generatePdf(facility_name, test_facs, test_fund, current_year)
