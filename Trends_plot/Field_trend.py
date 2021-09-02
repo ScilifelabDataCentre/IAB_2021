@@ -38,11 +38,15 @@ fig = px.scatter(
     trend_group,
     x="Year",
     y="Value",
-    color="Value_imp",
-    color_continuous_scale=colours,
+    # set the size of the marker by impact value
+    size="Value_imp",
+    # set the colour of the maker by impact value
+    # color="Value_imp",
+    # color_continuous_scale=colours,
 )
 fig.update_traces(
-    marker=dict(size=20, line=dict(width=2, color="black")),
+    #    marker=dict(size=20, line=dict(width=2, color="black")),
+    marker=dict(color="black", line=dict(width=2, color="black")),
     cliponaxis=False,
     opacity=1,
 )
@@ -155,5 +159,5 @@ fig.update_yaxes(
 )
 if not os.path.isdir("Plots/"):
     os.mkdir("Plots/")
-fig.show()
-# fig.write_image("Plots/{}_JIF.svg".format(name))
+# fig.show()
+# fig.write_image("Plots/{}_trends.svg".format(name))
