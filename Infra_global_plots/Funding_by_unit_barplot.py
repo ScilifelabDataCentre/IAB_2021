@@ -126,15 +126,15 @@ fig = go.Figure(
         ),
     ]
 )
-
+fig.update_layout(xaxis=go.layout.XAxis(tickangle=45))
 fig.update_layout(
     barmode="stack",
     plot_bgcolor="white",
-    font=dict(size=18),
+    font=dict(size=40),
     autosize=False,
-    margin=dict(r=0, t=0, b=0, l=0),
-    width=2500,
-    height=1000,
+    margin=dict(r=100, t=0, b=200, l=0),
+    width=2750,
+    height=2000,
     xaxis={"categoryorder": "total descending"},
     showlegend=True,
     legend=dict(orientation="h", yanchor="bottom", y=1, xanchor="right", x=1),
@@ -156,10 +156,11 @@ fig.update_yaxes(
     showgrid=True,
     gridcolor="lightgrey",
     linecolor="black",
-    dtick=10,  # 10 will work fine with most values
+    dtick=20,  # 10 will work fine with most values
     range=[0, int(Funding_max * 1.15)],
 )
 if not os.path.isdir("Plots"):
     os.mkdir("Plots")
 # fig.show()
 fig.write_image("Plots/Unitfunding_barchart_2020_v2.png")
+fig.write_image("Plots/Unitfunding_barchart_2020_v2.svg")

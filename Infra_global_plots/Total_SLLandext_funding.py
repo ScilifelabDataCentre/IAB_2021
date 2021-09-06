@@ -120,3 +120,4 @@ if not os.path.isdir("Plots"):
 # fig.show()
 
 fig.write_image("Plots/total_fund_SLLandext.png", scale=3)
+fig.write_image("Plots/total_fund_SLLandext.svg", scale=3)
